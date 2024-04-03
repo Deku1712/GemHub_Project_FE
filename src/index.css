@@ -61,3 +61,8 @@
   font-family: 'SFUFuturaRegular';
   src: url('./assets/fonts/SFUFuturaRegular.TTF') format('truetype');
 }
+
+@font-face {
+  font-family: 'SVN-TakenbyVultures';
+  src: url('./assets/fonts/SVNTakenbyVultures.TTF') format('truetype');
+}
