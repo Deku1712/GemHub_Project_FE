@@ -11,7 +11,6 @@ export default function Header() {
 
     useEffect(() => {
         const handleScroll = () => {
-            console.log(window.scrollY)
             setScrollY(window.scrollY);
         };
 
@@ -23,7 +22,7 @@ export default function Header() {
     }, []);
 
     return (
-        <div className=' w-full sticky top-0 bg-white   '>
+        <div className=' w-full  lg:sticky top-0 bg-white z-50  '>
             <div className={`header-top flex justify-around overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader    ${scrollY > 0 ? 'hidden' : ''}`}>
                 <div className=' hidden lg:flex justify-start  gap-3 text-xl'>
                     <FontAwesomeIcon icon={faFacebookF} className=' p-1 cursor-pointer' />
@@ -41,7 +40,7 @@ export default function Header() {
                     <FontAwesomeIcon icon={faPerson} className=' p-1 cursor-pointer' />
                 </div>
             </div>
-            <div className={`header-bot w-full  lg:block animate-transheader  ${scrollY == 0 ? 'border-y-[1px]  border-black' : '' } ${mobileMenu ? 'block': 'hidden'}`}>
+            <div className={`header-bot w-full  lg:block animate-transheader z-50  ${scrollY == 0 ? 'border-y-[1px]  border-black' : '' } ${mobileMenu ? 'block absolute bg-white': 'hidden'}`}>
                 <ul className={` relative flex flex-col lg:flex-row justify-center items-center gap-2  py-1  px-[15px]   ${scrollY > 0 ? ' py-4 animate-transheader' : 'max-w-screen-xl mx-auto '}`}>
                     <li className=' w-full flex-grow   text-center'>
                         <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang chủ</a>
