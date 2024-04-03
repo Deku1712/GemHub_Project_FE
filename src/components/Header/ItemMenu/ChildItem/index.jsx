@@ -3,7 +3,7 @@ import { faAngleDown, faAngleRight, faAngleUp, faArrowRight, faDiamond, faIcons 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function ChildItem() {
 
-    const [showMore, setShowMore] = useState(true);
+    const [showMore, setShowMore] = useState(false);
     return (
         <div className=' w-full  pl-4 pr-8 py-2 flex flex-col justify-center border-l-[1px] border-black '>
             <div className=' flex justify-between gap-2 items-center ' >

@@ -24,7 +24,7 @@ export default function Header() {
 
     return (
         <div className=' w-full sticky top-0 bg-white   '>
-            <div className={`header-top flex justify-around overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader border-b-[1px]  border-black lg:border-none  ${scrollY > 0 ? 'hidden' : ''}`}>
+            <div className={`header-top flex justify-around overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader    ${scrollY > 0 ? 'hidden' : ''}`}>
                 <div className=' hidden lg:flex justify-start  gap-3 text-xl'>
                     <FontAwesomeIcon icon={faFacebookF} className=' p-1 cursor-pointer' />
 
@@ -36,32 +36,32 @@ export default function Header() {
                 <div className=' w-[100px] h-[100px] p-2'>
                     <img src="src\assets\imgs\LogoGemHub.png" alt="" className=' scale-150 w-full h-full object-cover ' />
                 </div>
-                <div className=' flex justify-start  gap-3 text-xl'>
+                <div className=' flex justify-start  gap-3 text-xl   '>
                     <FontAwesomeIcon icon={faSearch} className=' p-1 cursor-pointer' />
                     <FontAwesomeIcon icon={faPerson} className=' p-1 cursor-pointer' />
                 </div>
             </div>
-            <div className={`header-bot w-full  lg:block  ${scrollY == 0 ? 'border-y-[1px]  border-black' : '' } ${mobileMenu ? 'block': 'hidden'}`}>
-                <ul className={` relative flex flex-col lg:flex-row justify-center items-center gap-2  py-2  px-[15px]   ${scrollY > 0 ? ' py-4 animate-transheader' : 'max-w-screen-xl mx-auto '}`}>
+            <div className={`header-bot w-full  lg:block animate-transheader  ${scrollY == 0 ? 'border-y-[1px]  border-black' : '' } ${mobileMenu ? 'block': 'hidden'}`}>
+                <ul className={` relative flex flex-col lg:flex-row justify-center items-center gap-2  py-1  px-[15px]   ${scrollY > 0 ? ' py-4 animate-transheader' : 'max-w-screen-xl mx-auto '}`}>
                     <li className=' w-full flex-grow   text-center'>
-                        <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang chủ</a>
+                        <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang chủ</a>
                     </li>
                     <ItemMenu/>
                     <li className='w-full flex-grow   text-center'>
-                        <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
+                        <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang Sức</a>
                     </li>
                     {/* <li className='flex-grow  text-center'>
                         <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
                     </li> */}
                     
                     <li className='w-full flex-grow  text-center'>
-                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
+                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang Sức</a>
                     </li>
                     <li className='w-full flex-grow  text-center'>
-                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
+                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown hover:font-SFUFuturaLight  transition ease-in-out uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
                     </li>
                     <li className='w-full  flex-grow text-center'>
-                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
+                        <a href="#" className=' text-sm font-SFUFuturaBold text-brown hover:font-SFUFuturaLight  transition ease-in-out uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
                     </li>
 
                 </ul>
