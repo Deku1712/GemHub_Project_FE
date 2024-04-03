@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'SFUFuturaBold';
+  src: url('./assets/fonts/SFUFuturaBold.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaBoldOblique';
+  src: url('./assets/fonts/SFUFuturaBoldOblique.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaBook';
+  src: url('./assets/fonts/SFUFuturaBook.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaBookOblique';
+  src: url('./assets/fonts/SFUFuturaBookOblique.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaExtraBold';
+  src: url('./assets/fonts/SFUFuturaExtraBold.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaExtraBoldOblique';
+  src: url('./assets/fonts/SFUFuturaExtraBoldOblique.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaHeavy';
+  src: url('./assets/fonts/SFUFuturaHeavy.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaHeavyOblique';
+  src: url('./assets/fonts/SFUFuturaHeavyOblique.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaLight';
+  src: url('./assets/fonts/SFUFuturaLight.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaLightOblique';
+  src: url('./assets/fonts/SFUFuturaLightOblique.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaObliqueTTF';
+  src: url('./assets/fonts/SFUFuturaObliqueTTF.TTF') format('truetype');
+}
+
+@font-face {
+  font-family: 'SFUFuturaRegular';
+  src: url('./assets/fonts/SFUFuturaRegular.TTF') format('truetype');
+}
