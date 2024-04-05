@@ -7,7 +7,7 @@ function App() {
   
 
   return (
-    <div className=' bg-white max-w-[1920px] h-[200vh] mx-auto '>
+    <div className=' bg-white max-w-[1920px]  mx-auto '>
       <Header/>
       <HomePage/>
     </div>
