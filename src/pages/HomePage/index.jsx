@@ -8,6 +8,7 @@ import Blog from '../../components/Blog'
 import AboutGemHub from '../../components/AboutGemHub'
 import Feedback from '../../components/FeedBack'
 
+
 export default function HomePage() {
   return (
     <div>
@@ -20,6 +21,7 @@ export default function HomePage() {
         <Blog/>
         <AboutGemHub/>
         <Feedback/>
+        
       </div>
     </div>
   )
