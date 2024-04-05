@@ -40,7 +40,7 @@ export default function Header() {
           <FontAwesomeIcon icon={faPerson} className=' p-1 cursor-pointer' />
         </div>
       </div>
-      <div className={`header-bot w-full  lg:block animate-transheader z-50  ${scrollY == 0 ? 'border-y-[1px]  border-black' : '' } ${mobileMenu ? 'block absolute bg-white': 'hidden'}`}>
+      <div className={`header-bot w-full   lg:block animate-transheader z-50  ${scrollY == 0 ? 'border-y-[1px]  border-black' : ' shadow-md' } ${mobileMenu ? 'block absolute bg-white': 'hidden'}`}>
         <ul className={` relative flex flex-col lg:flex-row justify-center items-center gap-2  py-1  px-[15px]   ${scrollY > 0 ? ' py-4 animate-transheader' : 'max-w-screen-xl mx-auto '}`}>
           <li className=' w-full flex-grow   text-center'>
             <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang chủ</a>
