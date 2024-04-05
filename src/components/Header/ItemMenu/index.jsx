@@ -16,7 +16,7 @@ export default function ItemMenu() {
       </span>
 
       <div className={`relative lg:absolute animate-transheader px-2 pt-2 pb-3 w-full  left-0 rounded-b-md bg-white lg:shadow-md ${isHovered ? 'block' : 'hidden'} `} >
-        <div className=' flex flex-col lg:flex-row justify-around pt-2  '>
+        <div className=' px-3 flex flex-col lg:flex-row justify-around pt-2  '>
 
           <ChildItem/>
           <ChildItem/>

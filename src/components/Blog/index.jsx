@@ -48,7 +48,7 @@ export default function Blog() {
 
   return (
     <div className=' w-full pb-[60px] '>
-      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black text-center text-[35px] text-brown font-SFUFuturaRegular font-semiBold'>
+      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black text-center text-[35px] text-brown tracking-widest font-SFUFuturaRegular font-semiBold'>
         <a href="#">Blog and Hint</a>
       </h2>
       <div className=' relative w-full  mx-auto max-w-[1280px] mb-[20px] '>

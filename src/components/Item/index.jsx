@@ -34,8 +34,11 @@ export default function Item() {
         </div>
       </div>
       <div className=' pb-4 px-2 flex flex-col gap-2 justify-center items-center'>
-        <a className=' text-sm font-SFUFuturaRegular font-semibold text-center uppercase' href="#">Vòng tay may mắn</a>
-        <p className=' text-sm font-SFUFuturaRegular uppercase text-center'>500.000 đ</p>
+        <a className=' text-sm font-SFUFuturaRegular text-center uppercase' href="#">Vòng tay may mắn</a>
+        <div className=' flex gap-1'>
+        <p className=' text-sm font-SFUFuturaRegular font-semibold   text-center'>500.000</p>
+         <span className=' underline text-[12px]  font-SFUFuturaRegular'>đ</span>
+        </div>
       </div>
 
       <ProductQuickView quickView={quickView} setQuickView={setQuickView} />
