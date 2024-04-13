@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductDetailPage'
 import Banner from './components/Banner'
 import BreadcrumbsJewery from './components/Breadcrumbs'
+import ShopPage from './pages/ShopPage'
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
       <Header/>
       <Banner/>
       <BreadcrumbsJewery/>
-      <ProductPage/>
+      <ShopPage/>
     </div>
   )
 }
