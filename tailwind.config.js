@@ -30,7 +30,9 @@ export default {
         SFUFuturaLightOblique: ['SFUFuturaLightOblique', 'sans-serif'],
         SFUFuturaObliqueTTF: ['SFUFuturaObliqueTTF', 'sans-serif'],
         SFUFuturaRegular: ['SFUFuturaRegular', 'sans-serif'],
-        SVNTakenbyVultures: ['SVN-TakenbyVultures', 'sans-serif']
+        SVNTakenbyVultures: ['SVN-TakenbyVultures', 'sans-serif'],
+        SVNFutura: ['SVNFutura', 'sans-serif'],
+        Roboto: ['Roboto']
       },
       colors: {
         'brown' : '#42210B'

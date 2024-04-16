@@ -3,6 +3,10 @@ import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductDetailPage'
+import Banner from './components/Banner'
+import BreadcrumbsJewery from './components/Breadcrumbs'
+import ShopPage from './pages/ShopPage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleUp } from '@fortawesome/free-solid-svg-icons'
 import { animateScroll as scroll } from 'react-scroll'
@@ -14,6 +18,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 
 function App() {
+
 
   const [scrollY, setScrollY] = useState(0)
 
@@ -56,6 +61,7 @@ function App() {
       {scrollY > 400 && <button className=' fixed animate-transheader bottom-3 right-3 px-3 py-2 rounded-md bg-white text-brown hover:bg-slate-200 transition ease-in-out' onClick={scrollToTop}>
         <FontAwesomeIcon icon={faAngleUp}/>
       </button>}
+
     </div>
   )
 }
