@@ -4,6 +4,10 @@ import About from '../../components/About'
 import Slogan from '../../components/Slogan'
 import About2 from '../../components/About2'
 import BestSeller from '../../components/BestSeller'
+import Blog from '../../components/Blog'
+import AboutGemHub from '../../components/AboutGemHub'
+import Feedback from '../../components/FeedBack'
+
 
 export default function HomePage() {
   return (
@@ -14,6 +18,10 @@ export default function HomePage() {
         <Slogan/>
         <About2/>
         <BestSeller/>
+        <Blog/>
+        <AboutGemHub/>
+        <Feedback/>
+        
       </div>
     </div>
   )

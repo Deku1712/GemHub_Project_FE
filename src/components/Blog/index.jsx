@@ -3,22 +3,23 @@ import Item from '../Item'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import { useState } from 'react'
+import BlogTag from './BlogTag'
 const responsive = {
   0: { items: 1 },
   568: { items: 2 },
-  1080: { items: 3 }
+  1280: { items: 3 }
 }
 
 const items = [
-  <Item key={1} />,
-  <Item key={2} />,
-  <Item key={4} />,
-  <Item key={5} />,
-  <Item key={3} />,
-  <Item key={6} />
+  <BlogTag key={1} />,
+  <BlogTag key={2} />,
+  <BlogTag key={4} />,
+  <BlogTag key={5} />,
+  <BlogTag key={3} />,
+  <BlogTag key={6} />
 
 ]
-export default function BestSeller() {
+export default function Blog() {
 
   const [thumbIndex, setThumbIndex] = useState(0)
   // const [items, setItems] = useState(transformData())
@@ -47,8 +48,8 @@ export default function BestSeller() {
 
   return (
     <div className=' w-full pb-[60px] '>
-      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black tracking-widest text-center text-[35px] text-brown te font-SFUFuturaRegular font-semiBold'>
-        <a href="#"> Best Seller</a>
+      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black text-center text-[35px] text-brown tracking-widest font-SFUFuturaRegular font-semiBold'>
+        <a href="#">Blog and Hint</a>
       </h2>
       <div className=' relative w-full  mx-auto max-w-[1280px] mb-[20px] '>
         <AliceCarousel
