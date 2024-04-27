@@ -15,6 +15,8 @@ import { useEffect, useState } from 'react'
 import PostPage from './pages/PostPage'
 import ComponentBreadCum from './components/Breadcrumb'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Shop from './components/Shop'
+import CartPage from './pages/CartPage'
 
 
 function App() {
@@ -52,7 +54,10 @@ function App() {
         <Route path="/" element={<HomePage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path='/posts' element={<PostPage/>} />
+        <Route path='/shop' element={<Shop/>}/>
+        <Route path='/cart' element={<CartPage/>}/>
       </Routes>
+      
 
 
       <Footer />

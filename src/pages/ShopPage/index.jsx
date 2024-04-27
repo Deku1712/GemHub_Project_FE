@@ -1,3 +1,4 @@
+import ComponentBreadCum from '../../components/Breadcrumb'
 import Shop from '../../components/Shop'
 
 const ShopPage = () => {
