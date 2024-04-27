@@ -4,7 +4,7 @@ import ComponentBreadCum from '../../components/Breadcrumb'
 
 export default function PostPage() {
   return (
-    <div className=' px-2 mb-8'>
+    <div className='  mb-8'>
       <div className=' relative w-full max-h-[950px]  pt-4 mb-4 overflow-hidden'>
         <img src="src\assets\imgs\BannerGemHub1.png" alt="" />
       </div>
