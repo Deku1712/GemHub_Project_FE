@@ -2,11 +2,12 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { faBagShopping, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Tooltip } from 'flowbite-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import React from 'react'
 import ProductQuickView from '../ProductQuickView'
-import { useDispatch } from 'react-redux'
-import { addItemToCart } from '../../redux/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItemToCart, getStateError, getStateStatus } from '../../redux/cartSlice'
+import Notification from '../Notification'
 
 export default function Item(props) {
 
@@ -17,12 +18,29 @@ export default function Item(props) {
   }
 
   const [quickView, setQuickView] = useState(false)
+  const [noti, setNoti] = useState(false)
+  const status = useSelector(getStateStatus)
+
   const dispatch = useDispatch()
 
   const addToCart = () => {
     console.log('add product id :', product.id)
-    dispatch(addItemToCart(product.id))
+
+    try {
+      dispatch(addItemToCart(product.id))
+      setNoti(true)
+    } catch (error) {
+        console.log('add Faild')
+
+    }
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setNoti(false)
+    }, 1500);
+  } , [noti])
+
+  
 
 
   return (
@@ -59,6 +77,7 @@ export default function Item(props) {
       </div>
 
       <ProductQuickView quickView={quickView} setQuickView={setQuickView} />
+      {noti && <Notification status = {status}/>}
     </div>
 
   )

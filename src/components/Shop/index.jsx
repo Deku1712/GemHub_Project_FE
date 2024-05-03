@@ -4,11 +4,10 @@ import Item from '../Item'
 import ComponentBreadCum from '../Breadcrumb'
 import { useEffect, useState } from 'react'
 import manage from '../../service/manage'
-import { Spinner } from "@material-tailwind/react";
+import { Spinner } from '@material-tailwind/react'
+
 
 const Shop = () => {
-  const itemList = [<Item key={1} />, <Item key={2} />, <Item key={3} />, <Item key={4} />, <Item key={5} />, <Item key={6} />, <Item key={7} />, <Item key={8} />]
-
   async function fetchData() {
     try {
       const response = await manage.getProduct()
@@ -22,11 +21,13 @@ const Shop = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    fetchData().then(response => setTimeout(() => setProducts(response.data), 500))
+    fetchData()
+      .then(response => setTimeout(() => setProducts(response.data), 500))
   }, [])
 
   return (
     <div className="container mx-auto sm:px-4 text-sm text-brown max-w-[1170px] leading-[1.7] pt-4 min-h-[900px]">
+      
       <ComponentBreadCum />
       <section className="main_container collection lg:w-full md:w-full ">
         <div className="category-products products style">
@@ -38,7 +39,7 @@ const Shop = () => {
                     NEW COLLECTION
                   </h1>
                   <div className="text-[0.92857em] inline-block ml-[4px]">
-                    <span className="text-[14px]">({itemList.length})</span>
+                    <span className="text-[14px]">({products.length})</span>
                   </div>
                 </div>
               </div>
@@ -102,15 +103,17 @@ const Shop = () => {
                   </div>
                 )
               })
-              :
-              <Spinner className="h-10 w-10 m-auto mt-6" />}
+                :
+                <Spinner className="h-10 w-10 m-auto mt-6" />}
             </div>
             <div style={{}}></div>
           </section>
-            
+
         </div>
       </section>
+
       
+
     </div>
   )
 }
