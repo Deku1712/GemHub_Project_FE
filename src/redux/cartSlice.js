@@ -9,21 +9,13 @@ const initialState = {
 }
 
 export const fetchCart = createAsyncThunk('cart/fetchCart', async () => {
-  try {
-    const response = await manage.getCart()
-    return response.data
-  } catch (error) {
-    return error.message
-  }
+  const response = await manage.getCart()
+  return response.data
 })
 
 export const addItemToCart = createAsyncThunk('cart/addItem' , async(id) => {
-  try {
-    const response = await manage.addItem(id)
-    return response.data
-  } catch (error) {
-    return error.message
-  }
+  const response = await manage.addItem(id)
+  return response.data
 })
 
 
@@ -47,7 +39,12 @@ const cartSlice = createSlice({
         state.error = action.error.message
       })
       .addCase(addItemToCart.fulfilled, (state, action) => {
+        state.status = 'succeeded'
         state.items = action.payload.items
+      })
+      .addCase(addItemToCart.rejected, (state, action) => {
+        state.status = 'falied'
+        state.error = action.error.message
       })
   }
 })

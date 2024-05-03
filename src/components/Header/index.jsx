@@ -1,5 +1,5 @@
 import { faFacebookF, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faBars, faCartShopping, faPerson, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faCartShopping, faPerson, faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useState } from 'react'
 import ItemMenu from './ItemMenu'
@@ -54,7 +54,7 @@ export default function Header() {
         </div>
         <div className=' flex justify-start  gap-3 text-xl   '>
           <FontAwesomeIcon icon={faSearch} className=' p-3 cursor-pointer' />
-          <FontAwesomeIcon icon={faPerson} className=' p-3 cursor-pointer' />
+          <FontAwesomeIcon icon={faUser} className=' p-3 cursor-pointer' />
           <Link to='/cart'>
             <Badge content='5' color='green' placement='top end' withBorder >
               <FontAwesomeIcon icon={faCartShopping} className=' p-3 cursor-pointer'/>

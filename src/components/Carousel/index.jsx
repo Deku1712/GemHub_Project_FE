@@ -22,7 +22,7 @@ export default function Carousel() {
 
   return (
 
-    <div className=' relative w-full max-h-[950px]  pt-4 mb-4 overflow-hidden'>
+    <div className=' relative w-full max-h-[650px]  pt-4 mb-4 overflow-hidden'>
       <AliceCarousel
         autoPlay
         autoPlayStrategy="none"
