@@ -8,6 +8,7 @@ import ProductQuickView from '../ProductQuickView'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, getStateError, getStateStatus } from '../../redux/cartSlice'
 import Notification from '../Notification'
+import { useNavigate } from 'react-router-dom'
 
 export default function Item(props) {
 
@@ -22,18 +23,29 @@ export default function Item(props) {
   const status = useSelector(getStateStatus)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const addToCart = () => {
     console.log('add product id :', product.id)
 
+    const itemDto = {
+      productId: product.id,
+      quantityOfProduct : 1
+    }
+
     try {
-      dispatch(addItemToCart(product.id))
+      dispatch(addItemToCart(itemDto))
       setNoti(true)
     } catch (error) {
         console.log('add Faild')
 
     }
   }
+
+  const viewDetail = () => {
+    navigate(`products/${product.id}`)
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setNoti(false)
@@ -68,7 +80,7 @@ export default function Item(props) {
           </div>
         </div>
       </div>
-      <div className=' pb-4 px-2 flex flex-col gap-2 justify-center items-center'>
+      <div className=' pb-4 px-2 flex flex-col gap-2 justify-center items-center' onClick={viewDetail}>
         <a className=' text-sm font-SFUFuturaRegular text-center uppercase' href="#">{product.productName}</a>
         <div className=' flex gap-1'>
           <p className=' text-sm font-SFUFuturaRegular font-semibold   text-center'>{product.productPrice}</p>

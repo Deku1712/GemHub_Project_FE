@@ -9,6 +9,9 @@ class Manage {
   getProduct() {
     return baseURL.get(baseUrl_Product)
   }
+  getProductById(id) {
+    return baseURL.get(baseUrl_Product + '/' + id)
+  }
 
 
   //Cart api
@@ -16,8 +19,9 @@ class Manage {
     return baseURL.get(baseUrl_Cart+ '/user')
   }
 
-  addItem(id) {
-    return baseURL.post(baseUrl_Cart+'/product/' + id )
+  addItem( itemDto) {
+   
+    return baseURL.post(baseUrl_Cart+'/product/' + itemDto.productId , itemDto)
   }
 
 }
