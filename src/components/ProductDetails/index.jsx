@@ -6,8 +6,14 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faGooglePlus } from '@fortawesome/free-brands-svg-icons'
 import { faPinterest } from '@fortawesome/free-brands-svg-icons'
+import { useDispatch } from 'react-redux'
+import { addItemToCart } from '../../redux/cartSlice'
 
-const Product = () => {
+const Product = (props) => {
+
+  const product = props.product
+  const dispatch = useDispatch()
+
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => {
@@ -25,9 +31,29 @@ const Product = () => {
     setBigImage(imageSrc)
   }
 
+  const addToCart = () => {
+    console.log('add product id :', product.id)
+    console.log('sl : ' + quantity)
+    const itemDto ={
+      productId : product.id,
+      quantityOfProduct : quantity
+    }
+    console.log(itemDto)
+    
+
+
+    try {
+      dispatch(addItemToCart( itemDto))
+      
+    } catch (error) {
+        console.log('add Faild')
+
+    }
+  }
+
   return (
     <div className="sm:w-full pr-4 pl-4">
-      <div className="flex flex-wrap mr-[-15px] ml-[-15px]">
+      {product == null ? <div>Loading...</div>: <div className="flex flex-wrap mr-[-15px] ml-[-15px]">
         <div className="sm:w-full pr-4 pl-4 md:w-1/2 lg:w-1/2 relative flex">
           <div className="large-image w-4/5 pr-4">
             <a href="//bizweb.dktcdn.net/thumb/1024x1024/100/302/551/products/compressed-editted-cropvi-2311-4-033-1-1.jpg?v=1703586081773" data-rel="prettyPhoto[product-gallery]">
@@ -46,7 +72,7 @@ const Product = () => {
           </div>
         </div>
         <div className="sm:w-full pr-4 pl-4 md:w-1/2 lg:w-1/2 details-pro">
-          <h1 className="text-2xl font-Roboto font-normal text-[#363636] mt-0 mb-3">TR DOUBLE BUBBLE HEART OXIDIZE</h1>
+          <h1 className="text-2xl font-Roboto font-normal text-[#363636] mt-0 mb-3">{product.productName}</h1>
           <div className="mb-3 pb-3 border-b-[#ebebeb] border-b border-solid text-brown text-[14px] leading-[17px] font-SVNFutura">
                         Tình trạng:
             <a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-red-600">Liên hệ Facebook để check số lượng 4 sản phẩm</span></a>
@@ -62,7 +88,7 @@ const Product = () => {
             </div>
           </div>
           <div className="mt-2.5 mb-[25px] mx-0 pt-[30px] border-t-[#ebebeb] border-t border-solid">
-            <div className="special-price"><span className="text-[2.50000em] inline-block text-[#42210b] leading-5 font-medium">270.000<span className="text-2xl align-text-top">đ</span></span> </div> {/* Giá */}
+            <div className="special-price"><span className="text-[2.50000em] inline-block text-[#42210b] leading-5 font-medium">{product.productPrice}<span className="text-2xl align-text-top">đ</span></span> </div> {/* Giá */}
           </div>
           <div className="form-product">
             <form encType="multipart/form-data" id="add-to-cart-form" action="/cart/add" method="post" className="form-inline margin-bottom-10">
@@ -76,10 +102,10 @@ const Product = () => {
                   <input type="text" className="text-[1em] text-center m-0 p-0 rounded-none h-10 border w-full max-w-full text-[#1c1c1c] min-h-[40px] block border-solid border-[#e1e1e1]" title="Số lượng" value={quantity} onChange={e => setQuantity(parseInt(e.target.value))} id="qty" name="quantity" />
                   <span onClick={handleIncrement} className="absolute text-center w-10 h-10 leading-10 text-xl cursor-pointer text-[#898989] right-2.5 top-0">+</span>
                 </div>
-                <div className="text-center bg-[#2e1c11] border-solid border-[10px] border-[#2e1c11]"><a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-white text-[15px]">Click để inbox FB check hàng ngay!</span></a></div>
-                {/*<button type="submit" className="btn btn-lg btn-primary btn-cart btn-cart2 add_to_cart btn_buy add_to_cart" title="Cho vào giỏ hàng">
-										<span>Thêm vào giỏ hàng</span>
-									</button>*/}
+                <div className=' flex justify-center items-center gap-x-2'>
+                  <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer "><a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Click để inbox FB check hàng ngay!</span></a></div>
+                  <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer " onClick={addToCart}><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Thêm vào giỏ hàng</span></div>
+                </div>                
               </div>
               <a className="inline-flex items-center border relative m-[5px] rounded-sm border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454">
                 <span className="inline-block border border-r-solid border-gray-500 p-[5px]"><img className="w-[30px] h-[30px] max-w-full mx-0.5 my-0 border-0 border-none" src="https://wishlists.sapoapps.vn/content/images/iwish_add.png" /></span>
@@ -114,8 +140,11 @@ const Product = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> }
+      
     </div>
+
+
   )
 }
 

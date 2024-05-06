@@ -13,10 +13,12 @@ export const fetchCart = createAsyncThunk('cart/fetchCart', async () => {
   return response.data
 })
 
-export const addItemToCart = createAsyncThunk('cart/addItem' , async(id) => {
-  const response = await manage.addItem(id)
+export const addItemToCart = createAsyncThunk('cart/addItem' , async ( itemDto) => {
+  console.log(itemDto)
+  const response = await manage.addItem( itemDto)
   return response.data
 })
+
 
 
 const cartSlice = createSlice({
