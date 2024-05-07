@@ -17,6 +17,8 @@ import ComponentBreadCum from './components/Breadcrumb'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Shop from './components/Shop'
 import CartPage from './pages/CartPage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
 
 
 function App() {
@@ -46,7 +48,7 @@ function App() {
 
   return (
     <div className=' relative bg-white max-w-[1920px]  mx-auto '>
-      <Header />
+      {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Header />}
       {/* <HomePage /> */}
       {/* <PostPage/> */}
 
@@ -57,15 +59,15 @@ function App() {
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/shop/products/:id' element={<ProductPage/>} />
         <Route path='/cart' element={<CartPage/>}/>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+
       </Routes>
-      
 
-
-      <Footer />
-
+      {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Footer />}
 
       {scrollY > 400 && <button className=' fixed animate-transheader bottom-3 right-3 px-3 py-2 rounded-md bg-white text-brown hover:bg-slate-200 transition ease-in-out' onClick={scrollToTop}>
-        <FontAwesomeIcon icon={faAngleUp}/>
+        <FontAwesomeIcon icon={faAngleUp} />
       </button>}
 
     </div>
