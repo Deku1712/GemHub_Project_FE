@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, getStateError, getStateStatus } from '../../redux/cartSlice'
 import Notification from '../Notification'
 import { useNavigate } from 'react-router-dom'
+import { getStatus } from '../../redux/userSlice'
 
 export default function Item(props) {
 
@@ -21,6 +22,7 @@ export default function Item(props) {
   const [quickView, setQuickView] = useState(false)
   const [noti, setNoti] = useState(false)
   const status = useSelector(getStateStatus)
+  const userStatus = useSelector(getStatus)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -43,7 +45,8 @@ export default function Item(props) {
   }
 
   const viewDetail = () => {
-    navigate(`products/${product.id}`)
+    if(userStatus === 'authenticated') navigate(`products/${product.id}`)
+    else navigate('/login')
   }
 
   useEffect(() => {

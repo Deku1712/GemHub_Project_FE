@@ -3,6 +3,11 @@ import { loginFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import FormExtra from './FormExtra'
 import Input from './Input'
+import { useDispatch, useSelector } from 'react-redux'
+import { getToken, loginUser, userLogin } from '../../../redux/userSlice'
+import manage from '../../../service/manage'
+import { saveTokenToLocalStorage } from '../../../api/localStorage'
+import { useNavigate } from 'react-router-dom'
 
 const fields=loginFields
 let fieldsState = {}
@@ -10,34 +15,29 @@ fields.forEach(field => fieldsState[field.id]='')
 
 export default function Login() {
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [loginState, setLoginState]=useState(fieldsState)
 
   const handleChange=(e) => {
     setLoginState({ ...loginState, [e.target.id]:e.target.value })
-    console.log(loginState);
   }
 
   const handleSubmit=(e) => {
     e.preventDefault()
+    // dispatch(loginUser(loginState))
     authenticateUser()
   }
 
-  //Handle Login API Integration here
-  const authenticateUser = () => {
-    const endpoint='http://localhost:8080/authen/logIn'
-    fetch(endpoint,
-      {
-        method:'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(loginState)
-      }).then(response => response.json())
-      .then(data => {
-        //API Success from LoginRadius Login API
-        alert(JSON.stringify(data));
-      })
-      .catch(error => console.log(error))
+  // Handle Login API Integration here
+  const authenticateUser = async () => {
+    const response = await manage.login(loginState)
+    
+    if(response.data.token != null) {
+      dispatch(userLogin(response.data.token)) 
+      saveTokenToLocalStorage(response.data.token)
+      navigate('/home')
+    }
   }
 
   return (
