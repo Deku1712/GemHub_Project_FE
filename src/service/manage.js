@@ -2,6 +2,7 @@ import baseURL from '../api/instance'
 
 const baseUrl_Product = 'products'
 const baseUrl_Cart = 'cart'
+const baseUrl_Post = 'posts'
 
 class Manage {
 
@@ -22,6 +23,14 @@ class Manage {
   addItem( itemDto) {
    
     return baseURL.post(baseUrl_Cart+'/product/' + itemDto.productId , itemDto)
+  }
+
+  //Post api
+  getPost() {
+    return baseURL.get(baseUrl_Post)
+  }
+  getPostById(id) {
+    return baseURL.get(baseUrl_Post + '/' + id)
   }
 
 }

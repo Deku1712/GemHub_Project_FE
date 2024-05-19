@@ -1,6 +1,6 @@
 import React from 'react'
-import { Breadcrumb } from "flowbite-react";
-import { HiHome } from "react-icons/hi";
+import { Breadcrumb } from 'flowbite-react';
+import { HiHome } from 'react-icons/hi';
 
 export default function ComponentBreadCum() {
   return (
