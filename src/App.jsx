@@ -19,9 +19,9 @@ import Shop from './components/Shop'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
+import Mainlayout from './mainlayout'
+import AddressPage from './pages/AddressPage'
 import PostDetailPage from './pages/PostDetailPage'
-
-
 function App() {
 
 
@@ -61,6 +61,7 @@ function App() {
         <Route path='/shop' element={<Shop/>}/>
         <Route path='/shop/products/:id' element={<ProductPage/>} />
         <Route path='/cart' element={<CartPage/>}/>
+        <Route path='/address' element={<AddressPage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
 

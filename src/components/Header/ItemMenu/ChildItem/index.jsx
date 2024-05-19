@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { faAngleDown, faAngleRight, faAngleUp, faArrowRight, faDiamond, faIcons } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export default function ChildItem() {
 
   const [showMore, setShowMore] = useState(false)
