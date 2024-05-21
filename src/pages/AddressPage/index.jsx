@@ -3,6 +3,10 @@ import ComponentBreadCum from '../../components/Breadcrumb'
 import { Select, Option } from '@material-tailwind/react'
 import { Button, TextInput, Textarea } from 'flowbite-react'
 import manage from '../../service/manage'
+import { DndContext } from '@dnd-kit/core'
+import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable'
+import { arrayMove } from '@dnd-kit/sortable'
+import AddressItem from '../../components/AddressItem'
 function AddressPage() {
   const host = 'https://provinces.open-api.vn/api/'
 
@@ -12,7 +16,7 @@ function AddressPage() {
   const [ward, setWard] = useState()
   const [btnAdd, setBtnAdd] = useState(false)
   const [addressDto, setAddressDto] = useState({
-    name : '',
+    name: '',
     phone: '',
     address: '',
     description: '',
@@ -20,10 +24,41 @@ function AddressPage() {
     city: '',
     warp: ''
   })
-
-  const addAddress = () => {
-    console.log(addressDto)
+  const resetAddressDto = () => {
+    setAddressDto({
+      name: '',
+      phone: '',
+      address: '',
+      description: '',
+      province: '',
+      city: '',
+      warp: ''
+    })
   }
+
+  const addAddress = async () => {
+    try {
+      const response = await manage.addAddress(addressDto)
+      if (response) {
+        resetAddressDto()
+        setBtnAdd(!btnAdd)
+      }
+    } catch (error) {
+      console.error('Error adding address:', error)
+    }
+  }
+
+  const handleDragEnd = (event) => {
+    const { active, over } = event
+  
+    if (active.id !== over.id) {
+      const oldIndex = listAddress.findIndex((item) => item.id === active.id)
+      const newIndex = listAddress.findIndex((item) => item.id === over.id)
+  
+      setListAddress((listAddress) => arrayMove(listAddress, oldIndex, newIndex))
+    }
+  };
+
 
   useEffect(() => {
     async function fetchData() {
@@ -51,24 +86,15 @@ function AddressPage() {
             <p className='text-sm my-4'> Sổ Địa Chỉ</p>
           </div>
           {!btnAdd &&
-          <div className=' flex flex-col gap-y-3'>
-            {listAddress && listAddress.map((address, index) => {
-              return (
-                <div key={index} className='py-2 px-2 border rounded-lg flex flex-row justify-between items-center font-mono'>
-                  <div>
-                    <p>Họ Tên: {address.name}</p>
-                    <p>Số Điện thoại : {address.phone}</p>
-                    <p>Địa chỉ: {address.address}</p>
-                    <p>Chú thích: {address.description}</p>
-                  </div>
-                  <div>
-                    {/* <Button className=' bg-brown  hover:opacity-75' >Làm mặc định</Button> */}
-                    {!JSON.parse(address.status) ? <Button className=' bg-brown  hover:opacity-75' >Làm mặc định</Button> : <p className=' text-gray text-center'>Mặc định</p>}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+            <div className=' flex flex-col gap-y-5'>
+              <DndContext onDragEnd={handleDragEnd}>
+                <SortableContext items={listAddress.map((address) => address.id)} strategy={verticalListSortingStrategy}>
+                  {listAddress.map((address) => (
+                    <AddressItem key={address.id} address={address} setListAddress = {setListAddress} />
+                  ))}
+                </SortableContext>
+              </DndContext>
+            </div>
           }
 
           <div className=' my-4'>
@@ -79,15 +105,15 @@ function AddressPage() {
           {btnAdd && <div className=' py-4 px-2 border flex flex-col w-full text-start'>
             <div className='flex flex-col gap-y-4 mt-4'>
               <label>Họ Tên</label>
-              <TextInput type='Text' required onChange={(e) => setAddressDto({ ...addressDto, name : e.target.value })} />
+              <TextInput type='Text' required onChange={(e) => setAddressDto({ ...addressDto, name: e.target.value })} />
             </div>
             <div className='flex flex-col gap-y-4 mt-4'>
               <label>Số điện thoại</label>
-              <TextInput type='text' pattern='/(84|0[3|5|7|8|9])+([0-9]{8})\b/g' required onChange={(e) => setAddressDto({ ...addressDto, phone : e.target.value })} />
+              <TextInput type='text' pattern='/(84|0[3|5|7|8|9])+([0-9]{8})\b/g' required onChange={(e) => setAddressDto({ ...addressDto, phone: e.target.value })} />
             </div>
             <div className='flex flex-col gap-y-4 mt-4 '>
               <label>Địa chỉ</label>
-              <TextInput type='Text' required onChange={(e) => setAddressDto({ ...addressDto, address : e.target.value })}/>
+              <TextInput type='Text' required onChange={(e) => setAddressDto({ ...addressDto, address: e.target.value })} />
             </div>
             <div className='flex flex-col gap-y-4 mt-4 '>
               <label>Location</label>
@@ -117,7 +143,7 @@ function AddressPage() {
             </div>
             <div className='flex flex-col gap-y-4 mt-4'>
               <label>Chú Thích</label>
-              <Textarea onChange={(e) => setAddressDto({ ...addressDto, description : e.target.value })}/>
+              <Textarea onChange={(e) => setAddressDto({ ...addressDto, description: e.target.value })} />
             </div>
             <div className=' flex justify-end items-center'>
               <Button className=' float-right  w-[10%] mt-4 bg-brown text-center' onClick={addAddress}>Thêm Địa Chỉ</Button>

@@ -21,11 +21,14 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import Mainlayout from './mainlayout'
 import AddressPage from './pages/AddressPage'
+import { getTokenFromLocalStorage } from './api/localStorage'
+import { useDispatch } from 'react-redux'
+import { loginUser, userLogin } from './redux/userSlice'
 
 
 function App() {
 
-
+  const dispatch = useDispatch()
   const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
@@ -47,6 +50,13 @@ function App() {
     })
   }
 
+  useEffect(() => {
+    const checkLogin = getTokenFromLocalStorage()
+    if(checkLogin) { 
+      dispatch(userLogin(checkLogin))
+    }
+  },[])
+
 
   return (
     <div className=' relative bg-white max-w-[1920px]  mx-auto '>
@@ -56,6 +66,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage/>} />
+        {/*  */}
         <Route path="/home" element={<HomePage/>} />
         <Route path='/posts' element={<PostPage/>} />
         <Route path='/shop' element={<Shop/>}/>
