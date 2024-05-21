@@ -4,6 +4,7 @@ const baseUrl_Product = 'products'
 const baseUrl_Cart = 'cart'
 const baseUrl_User = 'authen'
 const baseUrl_Address = 'address'
+const baseUrl_payment = 'payment'
 
 class Manage {
 
@@ -42,6 +43,17 @@ class Manage {
   }
   getAddressDefault() {
     return baseURL.get(baseUrl_Address + '/default')
+  }
+  addAddress(address) {
+    return baseURL.post(baseUrl_Address, address)
+  }
+  makeDefault(id) {
+    return baseURL.put(baseUrl_Address + '/updateDefault/' + id)
+  }
+
+  //payment api
+  payment(info) {
+    return baseURL.post(baseUrl_payment + '/submitOrder', info)
   }
 
 }
