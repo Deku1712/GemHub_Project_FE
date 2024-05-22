@@ -14,7 +14,7 @@ import { Button, Tooltip } from 'flowbite-react'
 import { useEffect, useState } from 'react'
 import PostPage from './pages/PostPage'
 import ComponentBreadCum from './components/Breadcrumb'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import Shop from './components/Shop'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
@@ -24,26 +24,13 @@ import AddressPage from './pages/AddressPage'
 import { getTokenFromLocalStorage } from './api/localStorage'
 import { useDispatch } from 'react-redux'
 import { loginUser, userLogin } from './redux/userSlice'
-import MainLayout from './MainLayout copy'
 
 
-
-function App() {
+function MainLayout() {
 
   const dispatch = useDispatch()
-  const [scrollY, setScrollY] = useState(0)
+  
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
 
   const scrollToTop = () => {
     scroll.scrollToTop(50, {
@@ -61,24 +48,18 @@ function App() {
 
 
   return (
+    <div className=' relative bg-white max-w-[1920px]  mx-auto '>
+      <Header />
+      <Outlet />
 
+      <Footer />
 
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route path="/home" element={<HomePage />} />
-        <Route path='/posts' element={<PostPage />} />
-        <Route path='/shop' element={<Shop />} />
-        <Route path='/shop/products/:id' element={<ProductPage />} />
-        <Route path='/cart' element={<CartPage />} />
-        <Route path='/address' element={<AddressPage />} />
-      </Route>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
-    </Routes>
+      {scrollY > 400 && <button className=' fixed animate-transheader bottom-3 right-3 px-3 py-2 rounded-md bg-white text-brown hover:bg-slate-200 transition ease-in-out' onClick={scrollToTop}>
+        <FontAwesomeIcon icon={faAngleUp} />
+      </button>}
 
-
-
+    </div>
   )
 }
 
-export default App
+export default MainLayout
