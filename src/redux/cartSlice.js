@@ -25,6 +25,11 @@ export const updateItemInCart = createAsyncThunk('cart/updateItem' , async ( ite
   return response.data
 })
 
+export const deleteItemInCart = createAsyncThunk('cart/deleteItem' , async (id) => {
+  const response = await manage.deleteItem(id)
+  return response.data
+})
+
 
 
 const cartSlice = createSlice({
@@ -60,6 +65,14 @@ const cartSlice = createSlice({
       })
       .addCase(updateItemInCart.rejected , (state, action) => {
         state.status = 'failiedUpdate'
+        state.error = action.error.message
+      })
+      .addCase(deleteItemInCart.fulfilled, (state, action) => {
+        state.status = 'succeeded',
+        state.items = action.payload.items
+      })
+      .addCase(deleteItemInCart.rejected, (state, action) => {
+        state.status = 'failiedDelete'
         state.error = action.error.message
       })
   }

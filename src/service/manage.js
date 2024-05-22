@@ -31,6 +31,10 @@ class Manage {
     return baseURL.put(baseUrl_Cart + '/product', itemDto)
   }
 
+  deleteItem(id) {
+    return baseURL.delete(baseUrl_Cart+ '/items/'+ id)
+  }
+
   //user api
 
   login(form) {
