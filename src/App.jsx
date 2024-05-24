@@ -22,6 +22,7 @@ import SignupPage from './pages/SignupPage'
 import Mainlayout from './mainlayout'
 import AddressPage from './pages/AddressPage'
 import PostDetailPage from './pages/PostDetailPage'
+import { SearchProvider } from './context/SearchContext'
 function App() {
 
 
@@ -49,29 +50,31 @@ function App() {
 
   return (
     <div className=' relative bg-white max-w-[1920px]  mx-auto '>
-      {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Header />}
-      {/* <HomePage /> */}
-      {/* <PostPage/> */}
+      <SearchProvider>
+        {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Header />}
+        {/* <HomePage /> */}
+        {/* <PostPage/> */}
 
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/home" element={<HomePage/>} />
-        <Route path='/posts' element={<PostPage/>} />
-        <Route path='/postDetail/:id' element={<PostDetailPage/>} />
-        <Route path='/shop' element={<Shop/>}/>
-        <Route path='/shop/products/:id' element={<ProductPage/>} />
-        <Route path='/cart' element={<CartPage/>}/>
-        <Route path='/address' element={<AddressPage/>} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+        <Routes>
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/home" element={<HomePage/>} />
+          <Route path='/posts' element={<PostPage/>} />
+          <Route path='/postDetail/:id' element={<PostDetailPage/>} />
+          <Route path='/shop' element={<Shop/>}/>
+          <Route path='/shop/products/:id' element={<ProductPage/>} />
+          <Route path='/cart' element={<CartPage/>}/>
+          <Route path='/address' element={<AddressPage/>} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
 
-      </Routes>
+        </Routes>
 
-      {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Footer />}
+        {!(window.location.pathname === '/login' || window.location.pathname === '/signup') && <Footer />}
 
-      {scrollY > 400 && <button className=' fixed animate-transheader bottom-3 right-3 px-3 py-2 rounded-md bg-white text-brown hover:bg-slate-200 transition ease-in-out' onClick={scrollToTop}>
-        <FontAwesomeIcon icon={faAngleUp} />
-      </button>}
+        {scrollY > 400 && <button className=' fixed animate-transheader bottom-3 right-3 px-3 py-2 rounded-md bg-white text-brown hover:bg-slate-200 transition ease-in-out' onClick={scrollToTop}>
+          <FontAwesomeIcon icon={faAngleUp} />
+        </button>}
+      </SearchProvider>
 
     </div>
   )
