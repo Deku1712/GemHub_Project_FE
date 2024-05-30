@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 import productsImage2 from '../../assets/imgs/imageProduct2.webp'
 import productsImage3 from '../../assets/imgs/ring1.webp'

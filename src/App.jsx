@@ -21,11 +21,12 @@ import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import Mainlayout from './mainlayout'
 import AddressPage from './pages/AddressPage'
+
+import PostDetailPage from './pages/PostDetailPage'
 import { getTokenFromLocalStorage } from './api/localStorage'
 import { useDispatch } from 'react-redux'
 import { loginUser, userLogin } from './redux/userSlice'
 import MainLayout from './MainLayout copy'
-
 
 
 function App() {
@@ -62,11 +63,11 @@ function App() {
 
   return (
 
-
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route path="/home" element={<HomePage />} />
         <Route path='/posts' element={<PostPage />} />
+        <Route path='/postDetail/:id' element={<PostDetailPage/>} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/shop/products/:id' element={<ProductPage />} />
         <Route path='/cart' element={<CartPage />} />
@@ -75,7 +76,6 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
     </Routes>
-
 
 
   )

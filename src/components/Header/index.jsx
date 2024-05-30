@@ -10,6 +10,7 @@ import { fetchCart, getStateError, getStateItems, getStateStatus } from '../../r
 import { Tooltip } from 'flowbite-react'
 import { Dropdown } from 'flowbite-react'
 import { getStatus } from '../../redux/userSlice'
+import SearchComponent from './ItemMenu/ChildItem/searchItem'
 
 export default function Header() {
 
@@ -46,7 +47,7 @@ export default function Header() {
 
 
   return (
-    <div className=' w-full  lg:sticky top-0 bg-white z-50  '>
+    <div className='w-full lg:sticky top-0 bg-white z-50 '>
       <div className={`header-top flex justify-between gap-x-10 overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader    ${scrollY > 0 ? 'hidden' : ''}`}>
         <div className=' lg:w-[156px] hidden lg:flex justify-start  gap-3 text-xl'>
           <FontAwesomeIcon icon={faFacebookF} className=' p-1 cursor-pointer' />
@@ -56,11 +57,11 @@ export default function Header() {
         <div className=' text-xl block lg:hidden cursor-pointer' onClick={() => setMoblieMenu(!mobileMenu)}>
           <FontAwesomeIcon icon={faBars} />
         </div>
-        <div className=' w-[100px] h-[100px] p-2'>
+        <div className=' w-[100px] h-[100px] p-2 mx-auto'>
           <img src="src\assets\imgs\LogoGemHub.png" alt="" className=' scale-150 w-full h-full object-cover ' />
         </div>
-        <div className=' flex justify-start  gap-3 text-xl   '>
-          <FontAwesomeIcon icon={faSearch} className=' p-3 cursor-pointer' />
+        <div className=' flex justify-start gap-3 text-xl   '>
+          <SearchComponent/>
 
           <div >
             <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
