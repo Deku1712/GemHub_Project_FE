@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import manage from '../../service/manage'
 import AddressItem from '../../components/AddressItem'
 import CartItem from './CartItem'
+import NotiCheck from '../../components/NotiCheck'
+import { formatCurrencyVND } from '../../api/function'
 function CartPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -20,6 +22,8 @@ function CartPage() {
   const [preOrder, setPreOrder] = useState([])
   const [addressDefault, setAddressDefault] = useState()
   const [total, setTotal] = useState(0)
+  const [openModal, setOpenModal] = useState(false)
+
 
   const address = () => navigate('/address')
 
@@ -44,59 +48,25 @@ function CartPage() {
     } catch (error) { /* empty */ }
   }
 
-  const submitOrder = async () => {
-    if (total != 0) {
-      const infor = {
-        amount: total,
-        orderInfor: 'Thanh toan don hang 2923'
-      }
-      try {
-        const response = await manage.payment(infor)
-        if (response.data.redirectUrl) {
-          console.log(response.data.redirectUrl)
-          window.location.href = response.data.redirectUrl
-        }
-        else {
-          console.log('faild to redirect URL')
-        }
+  
 
-      } catch (error) { /* empty */ }
-    }
+  const checkCart = async () => {
+    try {
+      const response = await manage.checkQuantity()
+      if (!response.data && total != 0) {
+        setOpenModal(true)
+      }
+      else {
+        navigate('/checkout')
+      }
+      console.log(response.data)
+    } catch (error) { /* empty */ }
+
   }
 
   useEffect(() => {
     dispatch(fetchCart())
   }, [])
-
-  // useEffect(() => {
-  //   if (Dataitems) {
-  //     const cartItems = []
-
-  //     Object.keys(Dataitems).forEach(key => {
-  //       const productData = key.match(/Product\(.*?\)/)[0]
-  //       const productId = parseInt(productData.match(/id=(\d+)/)[1])
-  //       const productName = productData.match(/productName=(.*?),/)[1]
-  //       const productType = productData.match(/productType=(.*?),/)[1]
-  //       const productPrice = parseFloat(productData.match(/productPrice=(\d+(\.\d+)?),/)[1])
-  //       const productQuantity = Dataitems[key]
-
-  //       const product = {
-  //         id: productId,
-  //         productName: productName,
-  //         productType: productType,
-  //         productPrice: productPrice,
-  //         productQuantity: productQuantity
-  //       }
-
-  //       cartItems.push(product)
-  //     })
-  //     cartItems.sort((a, b) => b.productQuantity - a.productQuantity)
-
-  //     setItems(cartItems)
-  //     const total = cartItems.reduce((sum, item) => sum + (parseInt(item.productPrice)* parseInt(item.productQuantity)), 0)
-  //     setTotal(total)
-  //   }
-  // }, [Dataitems])
 
   useEffect(() => {
     fetchAddressDefault().then(data => setAddressDefault(data))
@@ -105,11 +75,15 @@ function CartPage() {
   useEffect(() => {
     setCartItems(Dataitems.filter(item => item.status == true))
     setLaterItems(Dataitems.filter(item => item.status == false))
+    let t = Dataitems.filter(item => item.status == true).reduce((total, item) => {
+      return total + (item.quantity * item.product.productPrice)
+    }, 0)
+    setTotal(t)
+
   }, [Dataitems])
 
   const cartView = cartItems && cartItems.map((item, index) => <CartItem item={item} />)
   const laterView = laterItems && laterItems.map((item, index) => <CartItem item={item} />)
-
 
 
   return (
@@ -125,7 +99,7 @@ function CartPage() {
             <p className='text-sm my-4'>Xin chào, user</p>
           </div>
           <div className='flex lg:flex-row md:flex-col flex-col-reverse gap-4'>
-            <div className={`${cartItems.length > 0 ? 'lg:w-9/12' : ' w-full' } w-full  mr-4`}>
+            <div className={`${cartItems.length > 0 ? 'lg:w-9/12' : ' w-full'} w-full  mr-4`}>
               <h1 className=' text-start text-xl font-SFUFuturaBold py-4'>Shopping Cart</h1>
               <div className=' w-full py-4'>
                 {cartStatus === 'succeeded' && cartItems.length > 0 ? (
@@ -150,10 +124,10 @@ function CartPage() {
             {cartItems.length > 0 &&
               <div className=' w-full flex lg:flex-col flex-col-reverse lg:w-3/12 ml-4 animate-transheader'>
                 <div className=' w-full p-4 flex flex-col gap-y-2 items-start'>
-                  <h3 className=' font-semibold text-lg text-brown uppercase '>Total</h3>
-                  <p className=' text-2xl font-bold'>đ{total}</p>
-                  <button className=' w-full px-2 py-4 bg-red-400 text-white  cursor-pointer hover:opacity-85 hover:-translate-y-2 hover:-translate-x-2 hover:drop-shadow-2xl transition-all ease-in-out text-nowrap' onClick={submitOrder}>
-                    Thanh Toán
+                  <h3 className=' font-semibold text-lg text-brown uppercase '>Tổng số tiền</h3>
+                  <p className=' text-2xl font-semibold'>{formatCurrencyVND(total)}</p>
+                  <button className=' w-full px-2 py-4 bg-red-400 text-white  cursor-pointer hover:opacity-85 hover:-translate-y-2 hover:-translate-x-2 hover:drop-shadow-2xl transition-all ease-in-out text-nowrap' onClick={checkCart}>
+                    Tiến hành thanh toán
                   </button>
                 </div>
                 <div className=' w-full p-4 border-t-[1px]  flex flex-col gap-y-4 items-start font-SFUFuturaBook '>
@@ -207,6 +181,8 @@ function CartPage() {
           </div> */}
         </div>
       </div>
+
+      <NotiCheck openModal={openModal} setOpenModal={setOpenModal} />
     </div>
   )
 }

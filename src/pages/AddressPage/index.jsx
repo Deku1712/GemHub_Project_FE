@@ -36,12 +36,22 @@ function AddressPage() {
     })
   }
 
+  const fetchData = async () => {
+    try {
+      const response = await manage.getAddress()
+      setListAddress(response.data)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   const addAddress = async () => {
     try {
       const response = await manage.addAddress(addressDto)
       if (response) {
         resetAddressDto()
-        setBtnAdd(!btnAdd)
+        setBtnAdd(false)
+        await fetchData()  // Fetch the updated list of addresses
       }
     } catch (error) {
       console.error('Error adding address:', error)
@@ -50,26 +60,16 @@ function AddressPage() {
 
   const handleDragEnd = (event) => {
     const { active, over } = event
-  
+
     if (active.id !== over.id) {
       const oldIndex = listAddress.findIndex((item) => item.id === active.id)
       const newIndex = listAddress.findIndex((item) => item.id === over.id)
-  
+
       setListAddress((listAddress) => arrayMove(listAddress, oldIndex, newIndex))
     }
-  };
-
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await manage.getAddress()
-        setListAddress(response.data)
-      } catch (error) {
-        console.log(error.message)
-      }
-
-    }
     fetchData()
   }, [])
 
@@ -90,7 +90,7 @@ function AddressPage() {
               <DndContext onDragEnd={handleDragEnd}>
                 <SortableContext items={listAddress.map((address) => address.id)} strategy={verticalListSortingStrategy}>
                   {listAddress.map((address) => (
-                    <AddressItem key={address.id} address={address} setListAddress = {setListAddress} />
+                    <AddressItem key={address.id} address={address} setListAddress={setListAddress} />
                   ))}
                 </SortableContext>
               </DndContext>
