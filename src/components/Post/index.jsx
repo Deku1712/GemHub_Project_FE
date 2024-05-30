@@ -4,7 +4,7 @@ export default function Post() {
   return (
     <div className=' max-w-[410px] mx-auto p-3 border border-brown cursor-pointer'>
       <div className=' mb-4'>
-        <img className=' w-full h-full object-cover' src="src\assets\imgs\images (1).jpg" alt="" />
+        <img className=' w-full h-full object-cover' src="src\assets\imgs\a61af3ce63afcff196be3.jpg" alt="" />
       </div>
       <div>
         <p className=' text-sm font-SFUFuturaRegular mb-4'>12/06/2018</p>

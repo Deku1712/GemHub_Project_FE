@@ -1,3 +1,8 @@
+
+
+* {
+  --tw-ring-color: rgb(0 0 0 / 0) !important;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -5,6 +5,7 @@ const baseUrl_Cart = 'cart'
 const baseUrl_User = 'authen'
 const baseUrl_Address = 'address'
 const baseUrl_payment = 'payment'
+const baseURL_Order = 'order'
 
 class Manage {
 
@@ -58,6 +59,23 @@ class Manage {
   //payment api
   payment(info) {
     return baseURL.post(baseUrl_payment + '/submitOrder', info)
+  }
+  
+
+  // check quantity
+
+  checkQuantity() {
+    return baseURL.get(baseUrl_Cart + '/checkQuantity')
+  }
+
+  //getPreOrder
+  getPreOrder() {
+    return baseURL.get(baseUrl_Cart + '/getOrder')
+  }
+
+  // create Order
+  createOrder (PaymentMethod) {
+    return baseURL.post(baseURL_Order, PaymentMethod )
   }
 
 }

@@ -25,6 +25,8 @@ import { getTokenFromLocalStorage } from './api/localStorage'
 import { useDispatch } from 'react-redux'
 import { loginUser, userLogin } from './redux/userSlice'
 import MainLayout from './MainLayout copy'
+import CheckoutPage from './pages/CheckoutPage'
+import Result from './pages/Result'
 
 
 
@@ -65,6 +67,7 @@ function App() {
 
     <Routes>
       <Route path="/" element={<MainLayout />}>
+      <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path='/posts' element={<PostPage />} />
         <Route path='/shop' element={<Shop />} />
@@ -74,6 +77,8 @@ function App() {
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path='/checkout' element ={<CheckoutPage/>}/>
+      <Route path='/result' element={<Result/>}/>
     </Routes>
 
 

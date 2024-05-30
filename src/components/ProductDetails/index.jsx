@@ -57,7 +57,7 @@ const Product = (props) => {
         <div className="sm:w-full pr-4 pl-4 md:w-1/2 lg:w-1/2 relative flex">
           <div className="large-image w-4/5 pr-4">
             <a href="//bizweb.dktcdn.net/thumb/1024x1024/100/302/551/products/compressed-editted-cropvi-2311-4-033-1-1.jpg?v=1703586081773" data-rel="prettyPhoto[product-gallery]">
-              <img id="zoom_01" src={bigImage} alt="R MIDI BUBBLE HEART" className="img-responsive center-block" />
+              <img id="zoom_01" src={product.imgs[0].imgUrl} alt="R MIDI BUBBLE HEART" className="img-responsive center-block" />
             </a>
           </div>
           <div id="gallery_01" className="w-1/5" data-margin="10" data-items="5" data-direction="vertical" style={{ height: 470, cursor: 'grab' }}>
