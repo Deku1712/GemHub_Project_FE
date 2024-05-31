@@ -29,11 +29,12 @@ function CheckoutPage() {
         amount: total,
         orderInfor: 'Thanh toan don hang 2923'
       }
+
       try {
         const response = await manage.payment(infor)
         if (response.data.redirectUrl) {
           console.log(response.data.redirectUrl)
-          window.location.href = response.data.redirectUrl
+          window.open = response.data.redirectUrl
         }
         else {
           console.log('faild to redirect URL')

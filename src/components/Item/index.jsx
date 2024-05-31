@@ -69,7 +69,7 @@ export default function Item(props) {
   return (
     <div className=' m-2 flex-col group cursor-pointer  hover:shadow-md rounded transition ease-in-out duration-300'>
       <div className=' relative pb-2 mb-2 overflow-hidden '>
-        <img className=' group-hover:scale-110 group-hover:-translate-y-2 origin-center transition ease-in-out duration-300 w-full h-full object-cover' src={product.imgs[0].imgUrl} alt="" />
+        <img className=' group-hover:scale-110 group-hover:-translate-y-2 origin-center transition ease-in-out duration-300 w-full h-full object-cover' src={product.imgs[0].imgUrl} alt=""  />
         <div className='  absolute  bottom-0 justify-center items-center left-[50%] -translate-x-[50%] animate-transicon mb-6 gap-3'>
           <div className='hidden group-hover:flex animate-transicon gap-3 justify-center items-center'>
             <Tooltip content='Mua hàng' style='light' >
