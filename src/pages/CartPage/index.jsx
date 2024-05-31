@@ -12,6 +12,7 @@ import AddressItem from '../../components/AddressItem'
 import CartItem from './CartItem'
 import NotiCheck from '../../components/NotiCheck'
 import { formatCurrencyVND } from '../../api/function'
+import bannerGemhub1 from '../../assets/imgs/BannerGemHub1.png'
 function CartPage() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -89,7 +90,7 @@ function CartPage() {
   return (
     <div className='mb-8'>
       <div className='relative w-full max-h-[500px] pt-4 mb-4 overflow-hidden'>
-        <img src="src\assets\imgs\BannerGemHub1.png" alt="" />
+        <img src={bannerGemhub1} alt="" />
       </div>
       <div className='max-w-[1280px] mx-auto'>
         <ComponentBreadCum />

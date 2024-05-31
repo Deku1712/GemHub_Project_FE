@@ -11,18 +11,18 @@ import Notification from '../Notification'
 import { useNavigate } from 'react-router-dom'
 import { getStatus } from '../../redux/userSlice'
 import { formatCurrencyVND } from '../../api/function'
-
+import imgP from '../../assets/imgs/03 Vòng đá Aquamarin.jpg'
 
 
 export default function Item(props) {
-
+  
   const product = props.product || {
     id: 1,
     productName: 'kkasdfasdf',
     productPrice: '3232',
     imgs: [
       {
-        imgUrl: 'src/assets/imgs/03 Vòng đá Aquamarin.jpg'
+        imgUrl: imgP
       }
     ]
   }

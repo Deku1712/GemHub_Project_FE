@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
+import Slide1 from '../../assets/imgs/BannerGemHub1.png'
+// import Slide2 from '../../assets/imgs/BannerGemHub2.png'
+// import Slide3 from '../../assets/imgs/BannerGemHub3.png'
 
 const slides = [
   {
-    url: 'src/assets/imgs/BannerGemHub1.png'
+    url: Slide1
   },
   {
-    url: 'src/assets/imgs/BannerGemHub1.png'
+    url: Slide1
   },
   {
-    url: 'src/assets/imgs/BannerGemHub1.png'
+    url: Slide1
   }
 
 
