@@ -1,16 +1,5 @@
 {
-    "routes": [
-      { "src": "/", "dest": "/" },
-      { "src": "/home", "dest": "/" },
-      { "src": "/posts", "dest": "/" },
-      { "src": "/postDetail/:id", "dest": "/" },
-      { "src": "/shop", "dest": "/" },
-      { "src": "/shop/products/:id", "dest": "/" },
-      { "src": "/cart", "dest": "/" },
-      { "src": "/address", "dest": "/" },
-      { "src": "/signup", "dest": "/" },
-      { "src": "/checkout", "dest": "/" },
-      { "src": "/result", "dest": "/" }
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/" }
     ]
   }
-  
