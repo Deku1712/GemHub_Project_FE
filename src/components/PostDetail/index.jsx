@@ -13,7 +13,6 @@ const PostDetails = () => {
   const fetchPost = async () => {
     try {
       const response = await manage.getPostById(id)
-      console.log(response.data)
       if (response != null) {
         setPost(response.data)
       }

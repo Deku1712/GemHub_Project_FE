@@ -1,0 +1,15 @@
+{
+    "productName": "N DEER HORN",
+    "productType": "Day chuyen",
+    "productQuantity": "20",
+    "productDescription": "Dây chuyền bạc mảnh dẻ này sẽ giúp outfit của các bạn nữ thêm phần dễ thương đó. Với mặt dây chuyền nhỏ bé được làm bằng bạc 925 sáng bóng sẽ tạo nên phần nhẹ nhàng cho các bạn.",
+    "productPrice": "490000",
+    "imgs": [
+        {
+            "imgUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/302/551/products/dsc6911-1-copy.jpg?v=1599426772157"
+        },
+        {
+            "imgUrl": "https://bizweb.dktcdn.net/thumb/1024x1024/100/302/551/products/compressed-doneka8-8878-1.jpg?v=1680591627650"
+        }
+    ]
+}
