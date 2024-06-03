@@ -61,9 +61,8 @@ export default function Header() {
         <div className=' w-[100px] h-[100px] p-2 mx-auto'>
           <img src={Logo} alt="" className=' scale-150 w-full h-full object-cover ' />
         </div>
-        <div className=' flex justify-start gap-3 text-xl   '>
+        <div className=' flex justify-end gap-3 text-xl   '>
           <SearchComponent/>
-
           <div >
             <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
               <Dropdown.Item>

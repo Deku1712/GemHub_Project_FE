@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 
+
 export default function Post({ post }) {
 
-import ngoctam from '../../../assets/imgs/ngoctam.jpg'
 
   return (
     <div className=' flex flex-col gap-y-3 p-[25px] rounded-md hover:shadow-xl transition ease-in-out cursor-pointer border '>
