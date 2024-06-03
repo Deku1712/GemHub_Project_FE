@@ -11,6 +11,7 @@ import { Tooltip } from 'flowbite-react'
 import { Dropdown } from 'flowbite-react'
 import { getStatus } from '../../redux/userSlice'
 import SearchComponent from './ItemMenu/ChildItem/searchItem'
+import Logo from '../../assets/imgs/LogoGemHub.png'
 
 export default function Header() {
 
@@ -58,7 +59,7 @@ export default function Header() {
           <FontAwesomeIcon icon={faBars} />
         </div>
         <div className=' w-[100px] h-[100px] p-2 mx-auto'>
-          <img src="src\assets\imgs\LogoGemHub.png" alt="" className=' scale-150 w-full h-full object-cover ' />
+          <img src={Logo} alt="" className=' scale-150 w-full h-full object-cover ' />
         </div>
         <div className=' flex justify-start gap-3 text-xl   '>
           <SearchComponent/>

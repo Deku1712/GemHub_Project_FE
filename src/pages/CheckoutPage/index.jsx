@@ -6,8 +6,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import manage from '../../service/manage'
 import { Button, Spinner } from '@material-tailwind/react'
 import { formatCurrencyVND } from '../../api/function'
-
-
+import logo from '../../assets/imgs/LogoGemHub.png'
+import vnpay from '../../assets/imgs/Icon-VNPAY-QR.png'
 function CheckoutPage() {
   const [openModal, setOpenModal] = useState(true)
   const [result, setResult] = useState()
@@ -29,12 +29,12 @@ function CheckoutPage() {
         amount: total,
         orderInfor: 'Thanh toan don hang 2923'
       }
-
+      
       try {
         const response = await manage.payment(infor)
         if (response.data.redirectUrl) {
           console.log(response.data.redirectUrl)
-          window.open = response.data.redirectUrl
+          window.location.href = response.data.redirectUrl
         }
         else {
           console.log('faild to redirect URL')
@@ -82,7 +82,7 @@ function CheckoutPage() {
       {orderDetail.length > 0 ? <><div className=' mb-2 px-6 py-4 flex justify-between items-center bg-white  shadow-md '>
         <div>
           <Link to='/home' className=' flex gap-2 items-center justify-center'>
-            <img src='src\assets\imgs\LogoGemHub.png' className=' w-10 h-10 object-cover' />
+            <img src={logo} className=' w-10 h-10 object-cover' />
             <span className=' text-2xl text-brown font-semibold font-SVNFutura'>GemHub.</span>
           </Link>
         </div>
@@ -125,7 +125,7 @@ function CheckoutPage() {
                 <p>Thanh toán qua VNpay</p>
               </div>
               <div className='w-1/12'>
-                <img src='src\assets\imgs\Icon-VNPAY-QR.png' alt="VNpay QR Code" className='w-[70%] h-[70%] object-cover' />
+                <img src={vnpay} alt="VNpay QR Code" className='w-[70%] h-[70%] object-cover' />
               </div>
             </label>
           </fieldset>

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Post from '../../components/Post'
 import ComponentBreadCum from '../../components/Breadcrumb'
+
 import manage from '../../service/manage'
+
+import bannerGemhub1 from '../../assets/imgs/BannerGemHub1.png'
+
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]) // State để lưu trữ các bài post
@@ -21,9 +25,10 @@ export default function PostPage() {
   }, [])
 
   return (
-    <div className='mb-8'>
-      <div className='relative w-full max-h-[950px] pt-4 mb-4 overflow-hidden'>
-        <img src="src/assets/imgs/BannerGemHub1.png" alt="" />
+
+    <div className='  mb-8'>
+      <div className=' relative w-full max-h-[950px]  pt-4 mb-4 overflow-hidden'>
+        <img src={bannerGemhub1} alt="" />
       </div>
 
       <div className='max-w-[1080px] mx-auto'>
