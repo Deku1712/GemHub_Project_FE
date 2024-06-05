@@ -29,6 +29,8 @@ import { loginUser, userLogin } from './redux/userSlice'
 import MainLayout from './MainLayout copy'
 import CheckoutPage from './pages/CheckoutPage'
 import Result from './pages/Result'
+import AdminPage from './pages/AdminPage'
+import DashBoard from './pages/AdminPage/DashBoard'
 
 
 function App() {
@@ -80,6 +82,9 @@ function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path='/checkout' element ={<CheckoutPage/>}/>
       <Route path='/result' element={<Result/>}/>
+      <Route path='/admin/*' element={<AdminPage/>}>
+        <Route path='dashBoard' element={<DashBoard/>} />
+      </Route>
     </Routes>
 
 

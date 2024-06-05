@@ -7,12 +7,13 @@ import BestSeller from '../../components/BestSeller'
 import Blog from '../../components/Blog'
 import AboutGemHub from '../../components/AboutGemHub'
 import Feedback from '../../components/FeedBack'
+import { CarouselWithContent } from '../../components/Carousel2'
 
 
 export default function HomePage() {
   return (
     <div>
-      <Carousel />
+      <CarouselWithContent/>
       <div className=' max-w-screen-cus mx-auto'>
         <About/>
         <Slogan/>
