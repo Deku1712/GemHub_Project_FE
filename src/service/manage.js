@@ -88,6 +88,12 @@ class Manage {
     return baseURL.get(baseUrl_Post + '/' + id)
   }
 
+  //order api
+
+  getAllOrder() { 
+    return baseURL.get(baseURL_Order)
+  }
+
 }
 
 export default new Manage()

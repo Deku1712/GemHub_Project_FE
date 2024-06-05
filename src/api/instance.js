@@ -7,7 +7,7 @@ import { getTokenFromLocalStorage } from './localStorage'
 
 const baseURL = axios.create({
   // Đường dẫn API dùng chung cho toàn bộ dự án
-  baseURL: 'http://localhost:8080/',
+  baseURL: 'https://gemhubprojectbe-production-8a78.up.railway.app/',
 
   // Chỉ định dữ liệu truyền đi và từ máy chủ là dạng JSON.
   headers: {
