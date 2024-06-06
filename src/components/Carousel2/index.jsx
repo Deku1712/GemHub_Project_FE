@@ -2,7 +2,7 @@ import { Carousel, Typography, Button } from '@material-tailwind/react'
 import banner1 from '../../assets/imgs/BannerGemHub1.png'
 export function CarouselWithContent() {
   return (
-    <Carousel autoplay loop className="rounded-xl">
+    <Carousel autoplay loop className="rounded-b-xl">
       <div className="relative h-full w-full">
         <img
           src={banner1}

@@ -107,13 +107,13 @@ const Product = (props) => {
                   <input type="text" className="text-[1em] text-center m-0 p-0 rounded-none h-10 border w-full max-w-full text-[#1c1c1c] min-h-[40px] block border-solid border-[#e1e1e1]" title="Số lượng" value={quantity} onChange={e => setQuantity(parseInt(e.target.value))} id="qty" name="quantity" />
                   <span onClick={handleIncrement} className="absolute text-center w-10 h-10 leading-10 text-xl cursor-pointer text-[#898989] right-2.5 top-0">+</span>
                 </div>
-                <div className=' flex justify-center items-center gap-x-2'>
+                <div className=' flex justify-start items-center gap-x-2'>
                   <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer "><a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Click để inbox FB check hàng ngay!</span></a></div>
                   <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer " onClick={addToCart}><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Thêm vào giỏ hàng</span></div>
                 </div>
               </div>
-              <a className="inline-flex items-center border relative m-[5px] rounded-sm border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454">
-                <span className="inline-block border border-r-solid border-gray-500 p-[5px]"><img className="w-[30px] h-[30px] max-w-full mx-0.5 my-0 border-0 border-none" src="https://wishlists.sapoapps.vn/content/images/iwish_add.png" /></span>
+              <a className="inline-flex items-center border relative my-2 rounded-sm border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454">
+                <span className="inline-block border border-r-solid border-gray-500 p-[5px]"><img className="w-[30px] h-[30px] max-w-full  my-0 border-0 border-none" src="https://wishlists.sapoapps.vn/content/images/iwish_add.png" /></span>
                 <span className="inline-block p-[5px]">Thêm vào yêu thích</span>
               </a>
               <a className="hidden relative m-[5px] rounded-sm border border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454"><span className="iwishAddChild iwishAddBorder"><img className="iWishImg" src="https://wishlists.sapoapps.vn/content/images/iwish_added.png" /></span><span className="iwishAddChild">Đã yêu thích</span></a>

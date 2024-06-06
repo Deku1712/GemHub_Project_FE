@@ -7,6 +7,7 @@ const baseUrl_Address = 'address'
 const baseUrl_Post = 'posts'
 const baseUrl_payment = 'payment'
 const baseURL_Order = 'order'
+const baseURL_Session = 'session'
 
 
 class Manage {
@@ -90,9 +91,15 @@ class Manage {
 
   //order api
 
-  getAllOrder() { 
+  getAllOrder() {
     return baseURL.get(baseURL_Order)
   }
+
+  updateOrder(resultDTO) {
+    return baseURL.put(baseURL_Order , resultDTO)
+  }
+
+  // session api
 
 }
 

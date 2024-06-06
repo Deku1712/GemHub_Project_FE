@@ -8,6 +8,9 @@ import { Button, Spinner } from '@material-tailwind/react'
 import { formatCurrencyVND } from '../../api/function'
 import logo from '../../assets/imgs/LogoGemHub.png'
 import vnpay from '../../assets/imgs/Icon-VNPAY-QR.png'
+import useCookie from 'react-use-cookie'
+
+
 function CheckoutPage() {
   const [openModal, setOpenModal] = useState(true)
   const [result, setResult] = useState()
@@ -15,6 +18,8 @@ function CheckoutPage() {
   const [orderDetail, setOrderDetail] = useState([])
   const [total, setTotal] = useState(0)
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('PAYMENTONDELIVERY')
+  const [orderId, setOrderId, removeOrderid] = useCookie('orderId', '0')
+
   const fetchOrderDetail = async () => {
     try {
       const response = await manage.getPreOrder()
@@ -22,12 +27,12 @@ function CheckoutPage() {
     } catch (error) { console.log(error) }
   }
 
-  const submitOrder = async () => {
-
+  const submitOrder = async (id) => {
+    setOrderId(id)
     if (total != 0) {
       const infor = {
         amount: total,
-        orderInfor: 'Thanh toan don hang 2923'
+        orderInfor: 'Thanh toan don hang '
       }
       
       try {
@@ -53,12 +58,14 @@ function CheckoutPage() {
 
       if (selectedPaymentMethod == 'PAYMENTONDELIVERY') {
         setTimeout(() => {
-          if (response.data) navigate('/result?paymentStatus=1')
+          if (response) {
+            navigate('/result?paymentStatus=1')
+          }
           else navigate('/result?paymentStatus=0')
         }, 2000)
       }
       else {
-        submitOrder()
+        submitOrder(response.data.id)
       }
     } catch (error) { /* empty */ }
   }
