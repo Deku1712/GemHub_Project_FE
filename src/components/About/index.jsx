@@ -11,7 +11,7 @@ export default function About() {
       <div className=' basis-1/2 lg:basis-4/12 flex justify-center items-center flex-col gap-y-4 '>
         <img className=' w-full h-full lg:h-[50%] object-cover scale-75 translate-y-9' src={logo} alt="" />
         <div className=' lg:block hidden w-full h-[50%]  px-2 pt-3 '>
-          <h2 className=' text-brown text-3xl text-center font-semibold font-SFUFutura mt-4 mb-2'>
+          <h2 className=' text-brown text-3xl text-center font-SFUFuturaHeavy mt-4 mb-2'>
                         Trang sức là một phụ kiện <br /> mà còn là một tác phẩm nghệ thuật
           </h2>
           <p className=' text-brown text-center text-sm font-SFUFuturaRegular'>

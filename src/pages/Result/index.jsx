@@ -4,7 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import CircularProgress from '@mui/joy/CircularProgress'
 import { faCheck, faClose } from '@fortawesome/free-solid-svg-icons'
 import { Spinner } from 'flowbite-react'
-
+import manage from '../../service/manage'
+import { getCookie } from 'react-use-cookie';
 
 function useQuery() {
   return new URLSearchParams(useLocation().search)
@@ -16,7 +17,14 @@ function Result() {
   const query = useQuery()
   const paymentStatus = query.get('paymentStatus')
 
+  const updateOrder = async () => {
+    if (paymentStatus == 1) {
+      await manage.updateOrder({ orderId: getCookie('orderId'), result: 1 })
+    }
+  }
+
   React.useEffect(() => {
+    updateOrder()
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? prevProgress : prevProgress + 10))
     }, 30)

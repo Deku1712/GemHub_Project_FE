@@ -8,6 +8,7 @@ import Blog from '../../components/Blog'
 import AboutGemHub from '../../components/AboutGemHub'
 import Feedback from '../../components/FeedBack'
 import { CarouselWithContent } from '../../components/Carousel2'
+import AboutGemHub2 from '../../components/AboutGemHub2'
 
 
 export default function HomePage() {
@@ -20,7 +21,7 @@ export default function HomePage() {
         <About2/>
         <BestSeller/>
         <Blog/>
-        <AboutGemHub/>
+        <AboutGemHub2/>
         <Feedback/>
         
       </div>
