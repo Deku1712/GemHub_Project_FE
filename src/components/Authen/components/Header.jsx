@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
-
+import logo from '../../../assets/imgs/LogoGemHub.png'
 export default function Header({
   heading,
   paragraph,
@@ -13,7 +13,7 @@ export default function Header({
         <img
           alt=""
           className="h-20 w-20"
-          src="src\assets\imgs\LogoGemHub.png"/>
+          src={logo}/>
       </div>
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
         {heading}

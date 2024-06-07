@@ -35,7 +35,7 @@ const SearchComponent = () => {
         onKeyPress={handleKeyPress}
       />
       <button onClick={handleSearch}>
-        <FontAwesomeIcon icon={faSearch} className=' p-3 cursor-pointer mb-[50px] ml-2' />
+        <FontAwesomeIcon icon={faSearch} className=' p-3 cursor-pointer  ml-2' />
       </button>
     </div>
   )

@@ -34,7 +34,7 @@ const ProductPage = (props) => {
     <div className="container mx-auto mt-8 sm:px-4 text-sm text-[#42210b] max-w-[1170px] leading-[1.7]">
       <Product product = {product} />
       <div className="sm:w-full pr-4 pl-4">
-        <ProductSupport/>
+        <ProductSupport product = {product} />
         <BestSeller/>
       </div>
     </div>
