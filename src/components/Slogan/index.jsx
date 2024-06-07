@@ -53,7 +53,7 @@ export default function Slogan() {
                     Stones of Art, Crafted by Heart
         </p>
       </div>
-      <div className=' relative'>
+      {/* <div className=' relative'>
         <AliceCarousel
           activeIndex={thumbIndex}
           mouseTracking
@@ -66,7 +66,7 @@ export default function Slogan() {
         />
         {thumbIndex !== 0 && <div className="btn-prev absolute left-0 top-[50%] -translate-y-4 -translate-x-5 px-5 py-4 bg-[#f4f6f8] hover:bg-brown hover:text-white cursor-pointer" onClick={slidePrev} >&lang;</div>}
         {thumbIndex !== items.length - 3 && <div className="btn-next  absolute right-0 top-[50%] -translate-y-4 translate-x-4 px-5 py-4 bg-[#f4f6f8] hover:bg-brown hover:text-white cursor-pointer" onClick={slideNext}>&rang;</div>}
-      </div>
+      </div> */}
 
     </div>
   )

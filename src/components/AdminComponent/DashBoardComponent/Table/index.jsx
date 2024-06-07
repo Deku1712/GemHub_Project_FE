@@ -2,26 +2,40 @@ import { Card, Typography } from '@material-tailwind/react'
 import { useEffect, useState } from 'react'
 import manage from '../../../../service/manage'
 import { formatCurrencyVND } from '../../../../api/function'
+import Status from '../Status'
+import { ToastContainer, toast } from 'react-toastify'
+import ModalOrder from '../ModalOrder'
 
-const TABLE_HEAD = ['OrderID', 'Customer', 'Order phone', 'Value', 'Status' , 'Payment']
 
+const TABLE_HEAD = ['OrderID', 'Customer', 'Order phone', 'Value', 'Status', 'Payment', 'Create Time', 'Update Time']
 
-export function Table() {
-
+export function Table({ change, setChange }) {
+  const notifySuccess = () => toast('Update success!')
+  const notifyFaild = () => toast('Update faild!')
   const [orders, setOrders] = useState([])
-
+  const [openModal, setOpenModal] = useState(true)
+  const [selectedOrder, setSelectedOrder] = useState(null)
   const fetchOrder = async () => {
     const response = await manage.getAllOrder()
     return response.data
   }
 
+  const handleModal =(order) => {
+    
+    setOpenModal(true)
+    setSelectedOrder(order)
+  }
+
   useEffect(() => {
     fetchOrder().then(data => setOrders(data))
-  },[])
+    setChange(false)
+  }, [change])
 
 
   return (
     <div className=' w-full flex flex-col items-start'>
+      <ToastContainer position='top-center' />
+      <ModalOrder order={selectedOrder} openModal={openModal} setOpenModal={setOpenModal} />
       <h2 className=' text-lg font-semibold py-2 mb-2'>Danh sách hóa đơn</h2>
       <Card className="h-full w-full ">
         <table className="w-full min-w-max table-auto text-left">
@@ -50,11 +64,11 @@ export function Table() {
 
               return (
                 <tr key={order.id}>
-                  <td className={classes}>
+                  <td className={classes} onClick={() => {handleModal(order)}}>
                     <Typography
                       variant="small"
                       color="blue-gray"
-                      className="font-normal"
+                      className="font-normal text-purple-400 cursor-pointer"
                     >
                       {order.id}
                     </Typography>
@@ -79,35 +93,52 @@ export function Table() {
                   </td>
                   <td className={classes}>
                     <Typography
-                      as="a"
-                      href="#"
+
                       variant="small"
                       color="blue-gray"
                       className="font-medium"
                     >
-                    {formatCurrencyVND(order.total)}
+                      {formatCurrencyVND(order.total)}
                     </Typography>
                   </td>
                   <td className={classes}>
                     <Typography
-                      as="a"
-                      href="#"
+
                       variant="small"
                       color="blue-gray"
                       className="font-medium"
                     >
-                    {order.status}
+                      <Status setChange = {setChange} orderId = {order.id} status= {order.status} notifySuccess = {notifySuccess} notifyFaild={notifyFaild}/>
                     </Typography>
                   </td>
                   <td className={classes}>
                     <Typography
-                      as="a"
-                      href="#"
+
                       variant="small"
                       color="blue-gray"
                       className="font-medium"
                     >
-                    {order.statusPayment}
+                      {order.statusPayment}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      {order.createTime}
+                    </Typography>
+                  </td>
+                  <td className={classes}>
+                    <Typography
+
+                      variant="small"
+                      color="blue-gray"
+                      className="font-medium"
+                    >
+                      {order.updateTime}
                     </Typography>
                   </td>
                 </tr>

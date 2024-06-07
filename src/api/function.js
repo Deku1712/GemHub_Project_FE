@@ -7,5 +7,8 @@ export function formatCurrencyVND(amount) {
     });
   
     // Format the amount
-    return formatter.format(amount);
+    return formatter.format(amount)
   }
+
+
+  

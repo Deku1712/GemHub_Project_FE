@@ -1,6 +1,7 @@
 import { faFacebook, faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import logo from '../../assets/imgs/LogoGemHub.png'
 import React from 'react'
 
 export default function Footer() {
@@ -8,7 +9,7 @@ export default function Footer() {
     <div className=' w-full bg-brown h-[400px]'>
       <div className=' max-w-screen-xl mx-auto py-6 '>
         <div className='flex justify-center items-center mb-6'>
-          <img src="src\assets\imgs\LogoGemHub.png" alt="" className=' w-[90px] h-[90px] object-cover' />
+          <img src={logo} alt="" className=' w-[90px] h-[90px] object-cover' />
         </div>
         <div className=' py-4 flex flex-row justify-center  '>
 
