@@ -6,7 +6,7 @@ import logo from '../../../assets/imgs/LogoGemHub.png'
 
 function NavBar() {
   return (
-    <div className='  mt-4 pl-4  pt-4 sticky top-0 left-4 rounded-xl bg-white overflow-hidden'>
+    <div className='  mt-4 pl-4  pt-4 h-[800px] sticky top-0 left-4 rounded-xl bg-white overflow-hidden'>
         <div className=' w-full p-4 flex gap-x-1 justify-start items-cente border-b '>
             <img className='w-10 h-10 object-cover' src={logo} alt="" />
             <h2 className=' text-xl font-SFUFuturaBoldOblique'>Gemhub</h2>

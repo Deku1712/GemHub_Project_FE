@@ -22,7 +22,7 @@ export default function HomePage() {
         <BestSeller/>
         <Blog/>
         <AboutGemHub2/>
-        <Feedback/>
+        {/* <Feedback/> */}
         
       </div>
     </div>

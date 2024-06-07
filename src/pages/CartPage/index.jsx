@@ -89,9 +89,9 @@ function CartPage() {
 
   return (
     <div className='mb-8'>
-      <div className='relative w-full max-h-[500px] pt-4 mb-4 overflow-hidden'>
+      {/* <div className='relative w-full max-h-[500px] pt-4 mb-4 overflow-hidden'>
         <img src={bannerGemhub1} alt="" />
-      </div>
+      </div> */}
       <div className='max-w-[1280px] mx-auto'>
         <ComponentBreadCum />
         <div>

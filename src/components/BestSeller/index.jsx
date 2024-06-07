@@ -16,7 +16,7 @@ export default function BestSeller() {
 
   useEffect(() => {
     // Gọi API để lấy danh sách products
-    manage.getProduct()
+    manage.getProductLimited()
       .then(response => {
         setProducts(response.data) // Lưu trữ dữ liệu vào state
       })
@@ -54,8 +54,8 @@ export default function BestSeller() {
 
   return (
     <div className=' w-full pb-[60px] '>
-      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black tracking-widest text-center text-[35px] text-brown te font-SFUFuturaRegular font-semiBold'>
-        <a href="#"> Best Seller</a>
+      <h2 className=' mt-[40px] mb-[20px] pt-[20px] border-t-[1px] border-black  text-center text-[35px] text-brown font-SVNFutura'>
+         Sản phẩm giới hạn
       </h2>
       <div className=' relative w-full  mx-auto max-w-[1280px] mb-[20px] '>
         <AliceCarousel
