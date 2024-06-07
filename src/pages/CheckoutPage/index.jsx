@@ -32,7 +32,7 @@ function CheckoutPage() {
     if (total != 0) {
       const infor = {
         amount: total,
-        orderInfor: 'Thanh toan don hang '
+        orderInfor: 'Thanh toan don hang 2923'
       }
       
       try {
