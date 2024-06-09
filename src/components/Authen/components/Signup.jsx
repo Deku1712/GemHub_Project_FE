@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { signupFields } from '../constants/formFields'
 import FormAction from './FormAction'
 import Input from './Input'
+import { useNavigate } from 'react-router-dom'
+import manage from '../../../service/manage'
 
 const fields=signupFields
 let fieldsState={}
@@ -9,32 +11,31 @@ let fieldsState={}
 fields.forEach(field => fieldsState[field.id]='')
 
 export default function Signup() {
-  const [signupState, setSignupState]=useState(fieldsState)
+  const [signupState, setSignupState] = useState(fieldsState)
+  const navigate = useNavigate()
 
-  const handleChange=(e) => setSignupState({ ...signupState, [e.target.id]:e.target.value })
+  const handleChange = (e) => setSignupState({ ...signupState, [e.target.id]: e.target.value })
 
-  const handleSubmit=(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     console.log(signupState)
     createAccount()
   }
 
-  //handle Signup API Integration here
-  const createAccount=() => {
-    const endpoint='http://localhost:8080/authen/signUp'
-    fetch(endpoint,
-      {
-        method:'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body:JSON.stringify(signupState)
-      }).then(response => response.json())
-      .then(data => {
-        //API Success from LoginRadius Login API
-        alert(JSON.stringify(data));
-      })
-      .catch(error => console.log(error))
+  // handle Signup API Integration here
+  const createAccount = async () => {
+    try {
+      const response = await manage.signup(signupState)
+      if (response.status == 200) { // assuming your API returns a success field
+        alert('Signup successful! Please login.')
+        navigate('/login')
+      } else {
+        // handle error case, e.g., show error message
+        console.log(response.data || 'Signup failed')
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
