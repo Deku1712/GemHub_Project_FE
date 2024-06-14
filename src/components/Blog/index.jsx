@@ -2,7 +2,8 @@ import React from 'react'
 import Item from '../Item'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import manage from '../../service/manage'
 import BlogTag from './BlogTag'
 const responsive = {
   0: { items: 1 },
@@ -10,19 +11,27 @@ const responsive = {
   1280: { items: 3 }
 }
 
-const items = [
-  <BlogTag key={1} />,
-  <BlogTag key={2} />,
-  <BlogTag key={4} />,
-  <BlogTag key={5} />,
-  <BlogTag key={3} />,
-  <BlogTag key={6} />
 
-]
 export default function Blog() {
-
+  const [posts, setPosts] = useState([])
   const [thumbIndex, setThumbIndex] = useState(0)
   // const [items, setItems] = useState(transformData())
+
+  useEffect(() => {
+    // Gọi API để lấy danh sách các bài post
+    manage.getPost()
+      .then(response => {
+        setPosts(response.data) // Lưu trữ dữ liệu vào state
+      })
+      .catch(error => {
+        console.error('Error fetching posts:', error)
+      })
+  }, [])
+
+  const items = posts.map((post, index) => (
+    <BlogTag key={index} title={post.title} image={post.image} id={post.id}/>
+  ))
+
   const slideNext = () => {
     console.log(thumbIndex)
     console.log(items.length - 1)
