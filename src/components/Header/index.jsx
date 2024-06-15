@@ -44,11 +44,8 @@ export default function Header() {
 
   }, [])
 
-  
-
-
   return (
-    <div className='w-full lg:sticky top-0 bg-white z-50 '>
+    <div className='w-full lg:sticky top-0 bg-white z-50 pt-2'>
       <div className={`header-top flex justify-between gap-x-10 overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader    ${scrollY > 0 ? 'hidden' : ''}`}>
         <div className=' w-3/12 hidden lg:flex justify-start items-center gap-3 text-xl'>
           <FontAwesomeIcon icon={faFacebookF} className=' p-1 cursor-pointer' />

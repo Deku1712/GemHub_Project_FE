@@ -49,6 +49,10 @@ class Manage {
     return baseURL.post(baseUrl_User + '/logIn', form )
   }
 
+  signup(form) {
+    return baseURL.post(baseUrl_User + '/signUp', form)
+  }
+
   //address api
   getAddress() {
     return baseURL.get(baseUrl_Address)

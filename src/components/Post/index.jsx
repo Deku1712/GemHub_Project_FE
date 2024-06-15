@@ -9,8 +9,10 @@ export default function Post({ post }) {
       </div>
       <div>
         <p className='text-sm font-SFUFuturaRegular mb-4'>{post.createTime}</p>
-        <h3 className='text-brown text-lg text-start font-SFUFuturaBold mb-4'>{post.title}</h3>
-        <p className='text-sm font-SFUFuturaRegular text-[#2E1C11] mb-3'>{post.author}</p>
+        <a href={`/postDetail/${post.id}`}>
+          <h3 className='text-brown text-lg text-start font-SFUFuturaBold mb-4 hover:text-[#686665]'>{post.title}</h3>
+        </a>
+        <p className='text-sm font-SFUFuturaRegular text-[#2E1C11] mb-3 '>{post.author}</p>
         <p className='text-sm font-SFUFuturaBook text-[#2E1C11] mb-4'>{post.description}</p>
       </div>
     </div>
