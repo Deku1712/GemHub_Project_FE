@@ -2,10 +2,9 @@ import React, { useEffect } from 'react'
 import Item from '../Item'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import manage from '../../service/manage'
 import BlogTag from './BlogTag'
-import manage from '../../service/manage'
 const responsive = {
   0: { items: 1 },
   568: { items: 2 },
