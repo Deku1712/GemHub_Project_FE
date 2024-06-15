@@ -20,6 +20,10 @@ class Manage {
     return baseURL.get(baseUrl_Product + '/' + id)
   }
 
+  getProductLimited() {
+    return baseURL.get(baseUrl_Product + '/getProductLimited')
+  }
+
 
   //Cart api
   getCart() {
@@ -67,7 +71,7 @@ class Manage {
   payment(info) {
     return baseURL.post(baseUrl_payment + '/submitOrder', info)
   }
-  
+
 
   // check quantity
 
@@ -100,7 +104,18 @@ class Manage {
   }
 
   updateOrder(resultDTO) {
-    return baseURL.put(baseURL_Order , resultDTO)
+    return baseURL.put(baseURL_Order, resultDTO)
+  }
+  updateStatus(orderId, status) {
+    return baseURL.put(baseURL_Order + '/' + orderId, status)
+  }
+
+  getMonthlyIncome() {
+    return baseURL.get(baseURL_Order + '/monthlyIncome')
+  }
+
+  getTodayIncome() {
+    return baseURL.get(baseURL_Order + '/getTodayIncome')
   }
 
   // session api

@@ -11,6 +11,7 @@ export default function BlogTag({ title, image, id }) {
       <a href={`/postDetail/${id}`} className='text-lg text-brown text-center font-SFUFuturaHeavy cursor-pointer'>
         {title}
       </a>
+
     </div>
   )
 }

@@ -99,7 +99,7 @@ export default function Item(props) {
         </div>
       </div>
 
-      <ProductQuickView quickView={quickView} setQuickView={setQuickView} />
+      <ProductQuickView product = {product} quickView={quickView} setQuickView={setQuickView} />
       {noti && <Notification status = {status}/>}
     </div>
 

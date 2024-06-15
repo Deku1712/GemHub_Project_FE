@@ -47,7 +47,7 @@ export default function Header() {
   return (
     <div className='w-full lg:sticky top-0 bg-white z-50 pt-2'>
       <div className={`header-top flex justify-between gap-x-10 overflow-hidden max-w-screen-xl mx-auto px-[15px] animate-transheader    ${scrollY > 0 ? 'hidden' : ''}`}>
-        <div className=' lg:w-[156px] hidden lg:flex justify-start  gap-3 text-xl'>
+        <div className=' w-3/12 hidden lg:flex justify-start items-center gap-3 text-xl'>
           <FontAwesomeIcon icon={faFacebookF} className=' p-1 cursor-pointer' />
 
           <FontAwesomeIcon icon={faInstagram} className=' p-1 cursor-pointer' />
@@ -55,10 +55,10 @@ export default function Header() {
         <div className=' text-xl block lg:hidden cursor-pointer' onClick={() => setMoblieMenu(!mobileMenu)}>
           <FontAwesomeIcon icon={faBars} />
         </div>
-        <div className=' w-[100px] h-[100px] p-2 mx-auto'>
-          <img src={Logo} alt="" className=' scale-150 w-full h-full object-cover ' />
+        <div className=' w-6/12 flex justify-center items-center  p-2 '>
+          <img src={Logo} alt="" className=' w-20 h-20 object-cover ' />
         </div>
-        <div className=' flex justify-end gap-3 text-xl   '>
+        <div className=' flex justify-end items-center gap-3 text-xl   '>
           <SearchComponent/>
           <div >
             <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
@@ -85,9 +85,7 @@ export default function Header() {
             <Link to="/home" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang chủ</Link>
           </li>
           <ItemMenu />
-          <li className='w-full flex-grow   text-center'>
-            <a href="#" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang Sức</a>
-          </li>
+          
           {/* <li className='flex-grow  text-center'>
                         <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
                     </li> */}
@@ -95,12 +93,7 @@ export default function Header() {
           <li className='w-full flex-grow  text-center'>
             <Link to="/posts" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Bài viết</Link>
           </li>
-          <li className='w-full flex-grow  text-center'>
-            <a href="#" className=' text-sm font-SFUFuturaBold text-brown hover:font-SFUFuturaLight  transition ease-in-out uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
-          </li>
-          <li className='w-full  flex-grow text-center'>
-            <a href="#" className=' text-sm font-SFUFuturaBold text-brown hover:font-SFUFuturaLight  transition ease-in-out uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
-          </li>
+          
 
 
         </ul>

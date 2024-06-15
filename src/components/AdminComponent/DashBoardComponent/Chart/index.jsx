@@ -5,29 +5,61 @@ import {
   Typography
 } from '@material-tailwind/react'
 import Chart from 'react-apexcharts'
-import { Square3Stack3DIcon } from '@heroicons/react/24/outline'
+import manage from '../../../../service/manage'
+import { useEffect, useState } from 'react'
+import { formatCurrencyVND } from '../../../../api/function'
 
-// If you're using Next.js please use the dynamic import for react-apexcharts and remove the import from the top for the react-apexcharts
-// import dynamic from "next/dynamic";
-// const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
+function transformData(data) {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const seriesData = new Array(12).fill(0) // Initialize array with 12 zeros
 
-const chartConfig = {
-  type: 'line',
-  height: 240,
-  series: [
-    {
-      name: 'Sales',
-      data: [50, 40, 300, 320, 500, 350, 200, 230, 500]
+  Object.keys(data).forEach(month => {
+    const monthIndex = parseInt(month) - 1 // Convert to zero-based index
+    seriesData[monthIndex] = data[month]
+  })
+
+  return {
+    categories: months,
+    series: [{
+      name: 'Doanh thu',
+      data: seriesData
+    }]
+  }
+}
+
+export default function ChartSale({change, setChange}) {
+  const [chartData, setChartData] = useState({
+    series: [{
+      name: 'Doanh thu',
+      data: []
+    }],
+    categories: []
+  })
+
+  const fetchMonthlyIncome = async () => {
+    try {
+      const response = await manage.getMonthlyIncome()
+      const transformedData = transformData(response.data)
+      setChartData(transformedData)
+    } catch (error) {
+      console.error('Error fetching monthly income data:', error)
     }
-  ],
-  options: {
+  }
+
+  const chartConfig = {
     chart: {
       toolbar: {
         show: false
       }
     },
     title: {
-      show: ''
+      text: 'Doanh thu hàng tháng',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        color: '#263238'
+      }
     },
     dataLabels: {
       enabled: false
@@ -38,7 +70,9 @@ const chartConfig = {
       curve: 'smooth'
     },
     markers: {
-      size: 0
+      size: 5,
+      colors: ['#020617'],
+      strokeWidth: 2
     },
     xaxis: {
       axisTicks: {
@@ -55,17 +89,7 @@ const chartConfig = {
           fontWeight: 400
         }
       },
-      categories: [
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec'
-      ]
+      categories: chartData.categories
     },
     yaxis: {
       labels: {
@@ -95,19 +119,30 @@ const chartConfig = {
       opacity: 0.8
     },
     tooltip: {
-      theme: 'dark'
+      theme: 'dark',
+      x: {
+        show: true
+      },
+      y: {
+        formatter: function (value) {
+          return  formatCurrencyVND(value)
+        }
+      }
     }
   }
-}
 
-export default function ChartSale() {
+  useEffect(() => {
+    fetchMonthlyIncome()
+    setChange(false)
+  }, [change])
+
   return (
     <Card>
       <CardHeader
         floated={false}
         shadow={false}
         color="transparent"
-        className=" w-full h-full flex flex-col gap-4 rounded-none md:flex-row md:items-center"
+        className="w-full h-full flex flex-col gap-4 rounded-none md:flex-row md:items-center"
       >
         <div>
           <Typography variant="h6" color="blue-gray">
@@ -116,7 +151,7 @@ export default function ChartSale() {
         </div>
       </CardHeader>
       <CardBody className="px-2 pb-0">
-        <Chart {...chartConfig} />
+        <Chart options={chartConfig} series={chartData.series} type="line" height={240} />
       </CardBody>
     </Card>
   )
