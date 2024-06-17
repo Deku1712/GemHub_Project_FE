@@ -52,6 +52,10 @@ class Manage {
   signup(form) {
     return baseURL.post(baseUrl_User + '/signUp', form)
   }
+ 
+  logout() {
+    return baseURL.post(baseUrl_User + '/logout')
+  }
 
   //address api
   getAddress() {
@@ -101,6 +105,10 @@ class Manage {
 
   getAllOrder() {
     return baseURL.get(baseURL_Order)
+  }
+
+  getOrderByUserName(userName) {
+    return baseURL.get(baseURL_Order + '/user/' + userName)
   }
 
   updateOrder(resultDTO) {

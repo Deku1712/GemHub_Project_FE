@@ -31,6 +31,7 @@ import CheckoutPage from './pages/CheckoutPage'
 import Result from './pages/Result'
 import AdminPage from './pages/AdminPage'
 import DashBoard from './pages/AdminPage/DashBoard'
+import { UserOrder } from './components/UserOrder'
 
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
         <Route path='/shop/products/:id' element={<ProductPage />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/address' element={<AddressPage />} />
+        <Route path='/order/user' element={<UserOrder />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />

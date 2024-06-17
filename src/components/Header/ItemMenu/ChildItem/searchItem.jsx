@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import baseURL from '../../../../api/instance'
 
 const SearchComponent = () => {
   const [keyword, setKeyword] = useState('')
@@ -10,7 +11,7 @@ const SearchComponent = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/products/search/${keyword}`)
+      const response = await baseURL.get(`products/search/${keyword}`)
       console.log(response.data);
       navigate('/shop', { state: { products: response.data } }) // Redirect đến /shop và truyền dữ liệu kết quả tìm kiếm
     } catch (error) {
