@@ -12,6 +12,7 @@ import { Dropdown } from 'flowbite-react'
 import { getStatus } from '../../redux/userSlice'
 import SearchComponent from './ItemMenu/ChildItem/searchItem'
 import Logo from '../../assets/imgs/LogoGemHub.png'
+import manage from '../../service/manage'
 
 export default function Header() {
 
@@ -24,12 +25,27 @@ export default function Header() {
   const cartStatus = useSelector(getStateStatus)
   const cartError = useSelector(getStateError)
   const userStatus = useSelector(getStatus)
+  const token = localStorage.getItem('token')
 
   const checkAuthen = () => {
-    if(userStatus === 'authenticated') navigate('/cart')
+    if (userStatus === 'authenticated') navigate('/cart')
     else navigate('/login')
   }
 
+  function parseJwt(token) {
+    if (!token || typeof token !== 'string') {
+      return null; // Handle case where token is not a string or is empty
+    }
+    // Tách phần payload từ token
+    const base64Url = token.split('.')[1];
+    // Chuyển đổi base64url thành base64
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    // Giải mã base64 thành chuỗi JSON
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +59,19 @@ export default function Header() {
     }
 
   }, [])
+
+  const onLogout = async () => {
+    try {
+      await manage.logout();
+      // Clear user authentication details, e.g., remove token from localStorage
+      localStorage.removeItem('token');
+      // Redirect to login page or any other page
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout failed:', error);
+      // Handle error if needed
+    }
+  };
 
   return (
     <div className='w-full lg:sticky top-0 bg-white z-50 pt-2'>
@@ -59,15 +88,31 @@ export default function Header() {
           <img src={Logo} alt="" className=' w-20 h-20 object-cover ' />
         </div>
         <div className=' flex justify-end items-center gap-3 text-xl   '>
-          <SearchComponent/>
+          <SearchComponent />
           <div >
             <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
-              <Dropdown.Item>
-                <Link to='/login'>Đăng nhập</Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link to='/signup'>Đăng ký</Link>
-              </Dropdown.Item>
+              {userStatus === 'authenticated' ? (
+                <>
+                  <Dropdown.Item>
+                    {parseJwt(token).sub}
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to='/order/user'>My Orders</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={onLogout}>
+                    Logout
+                  </Dropdown.Item>
+                </>
+              ) : (
+                <>
+                  <Dropdown.Item>
+                    <Link to='/login'>Đăng nhập</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to='/signup'>Đăng ký</Link>
+                  </Dropdown.Item>
+                </>
+              )}
             </Dropdown>
           </div>
           <div onClick={checkAuthen} >
@@ -85,7 +130,7 @@ export default function Header() {
             <Link to="/home" className='  text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Trang chủ</Link>
           </li>
           <ItemMenu />
-          
+
           {/* <li className='flex-grow  text-center'>
                         <a href="#" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 cursor-pointer'>Trang Sức</a>
                     </li> */}
@@ -93,7 +138,7 @@ export default function Header() {
           <li className='w-full flex-grow  text-center'>
             <Link to="/posts" className=' text-sm font-SFUFuturaBold text-brown uppercase px-1 py-1 hover:font-SFUFuturaLight  transition ease-in-out cursor-pointer'>Bài viết</Link>
           </li>
-          
+
 
 
         </ul>
