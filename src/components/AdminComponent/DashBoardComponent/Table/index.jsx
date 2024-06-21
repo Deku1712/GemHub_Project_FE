@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import ModalOrder from '../ModalOrder'
 
 
-const TABLE_HEAD = ['OrderID', 'Customer', 'Order phone', 'Value', 'Status', 'Payment', 'Create Time', 'Update Time']
+const TABLE_HEAD = ['OrderID', 'Customer', 'Order phone', 'Value', 'Status', 'Create Time', 'Update Time']
 
 export function Table({ change, setChange }) {
   const notifySuccess = () => toast('Update success!')
@@ -111,7 +111,7 @@ export function Table({ change, setChange }) {
                       <Status setChange = {setChange} orderId = {order.id} status= {order.status} notifySuccess = {notifySuccess} notifyFaild={notifyFaild}/>
                     </Typography>
                   </td>
-                  <td className={classes}>
+                  {/* <td className={classes}>
                     <Typography
 
                       variant="small"
@@ -120,7 +120,7 @@ export function Table({ change, setChange }) {
                     >
                       {order.statusPayment}
                     </Typography>
-                  </td>
+                  </td> */}
                   <td className={classes}>
                     <Typography
 

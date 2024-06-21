@@ -7,11 +7,13 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faGooglePlus } from '@fortawesome/free-brands-svg-icons'
 import { faPinterest } from '@fortawesome/free-brands-svg-icons'
-import { useDispatch } from 'react-redux'
-import { addItemToCart } from '../../redux/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItemToCart, getStateStatus } from '../../redux/cartSlice'
+import Notification from '../Notification'
 
 const Product = (props) => {
-
+  const [noti, setNoti] = useState(false)
+  const status = useSelector(getStateStatus)
   const product = props.product
   const dispatch = useDispatch()
 
@@ -48,17 +50,24 @@ const Product = (props) => {
     console.log(itemDto)
     try {
       dispatch(addItemToCart( itemDto))
+      setNoti(true)
     } catch (error) {
       console.log('add Faild')
     }
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setNoti(false)
+    }, 1500);
+  } , [noti])
 
   return (
     <div className="sm:w-full pr-4 pl-4">
       {product == null ? <div>Loading...</div>: <div className="flex flex-wrap mr-[-15px] ml-[-15px]">
+      {noti && <Notification status= {status}/>}
         <div className="sm:w-full pr-4 pl-4 md:w-1/2 lg:w-1/2 relative flex">
           <div className="large-image w-4/5 pr-4">
-            <a href="//bizweb.dktcdn.net/thumb/1024x1024/100/302/551/products/compressed-editted-cropvi-2311-4-033-1-1.jpg?v=1703586081773" data-rel="prettyPhoto[product-gallery]">
+            <a href={bigImage} data-rel="prettyPhoto[product-gallery]">
               <img id="zoom_01" src={bigImage} alt={product.productName} className="img-responsive center-block" />
             </a>
           </div>
@@ -80,7 +89,7 @@ const Product = (props) => {
           <h1 className="text-2xl font-Roboto font-normal text-[#363636] mt-0 mb-3">{product.productName}</h1>
           <div className="mb-3 pb-3 border-b-[#ebebeb] border-b border-solid text-brown text-[14px] leading-[17px] font-SVNFutura">
                         Tình trạng:
-            <a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-red-600">{product.productQuantity}</span></a>
+            <a href="#" target="_blank" title="Liên hệ FB"><span className="text-red-600">{product.productQuantity}</span></a>
             <span className="-translate-y-px inline-block mx-[5px] my-0">|</span>
                         Mã SP:
             <span className="text-stone-500">
@@ -108,18 +117,18 @@ const Product = (props) => {
                   <span onClick={handleIncrement} className="absolute text-center w-10 h-10 leading-10 text-xl cursor-pointer text-[#898989] right-2.5 top-0">+</span>
                 </div>
                 <div className=' flex justify-start items-center gap-x-2'>
-                  <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer "><a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Click để inbox FB check hàng ngay!</span></a></div>
+                  {/* <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer "><a href="https://m.me/katjewelry" target="_blank" title="Liên hệ FB"><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Click để inbox FB check hàng ngay!</span></a></div> */}
                   <div className="text-center  bg-[#2e1c11] p-3 hover:bg-white  transition-all ease-in-out cursor-pointer " onClick={addToCart}><span className="text-white hover:text-[#1c1c1c] transition-all ease-in-out text-[15px]">Thêm vào giỏ hàng</span></div>
                 </div>
               </div>
-              <a className="inline-flex items-center border relative my-2 rounded-sm border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454">
+              {/* <a className="inline-flex items-center border relative my-2 rounded-sm border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454">
                 <span className="inline-block border border-r-solid border-gray-500 p-[5px]"><img className="w-[30px] h-[30px] max-w-full  my-0 border-0 border-none" src="https://wishlists.sapoapps.vn/content/images/iwish_add.png" /></span>
                 <span className="inline-block p-[5px]">Thêm vào yêu thích</span>
-              </a>
+              </a> */}
               <a className="hidden relative m-[5px] rounded-sm border border-solid border-gray-500" href="javascript:;" data-customer-id="0" data-product="33572594" data-variant="103696454"><span className="iwishAddChild iwishAddBorder"><img className="iWishImg" src="https://wishlists.sapoapps.vn/content/images/iwish_added.png" /></span><span className="iwishAddChild">Đã yêu thích</span></a>
             </form>
             <div className="md-discount-box-inform" id="md-discount-box-inform"></div>
-            <div className="social-sharing">
+            {/* <div className="social-sharing">
               <div className="flex flex-wrap mr-[-15px] ml-[-15px]">
                 <div className="sm:w-2/5 pr-4 pl-4">
                   <div className="text-[1em]" data-permalink="https://katjewelry.vn/tr-double-bubble-heart-oxidize">
@@ -142,7 +151,7 @@ const Product = (props) => {
                   <div className="contact">Click <a href="https://m.me/katjewelry">[ĐÂY] </a> để liên hệ Facebook tư vấn</div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div> }

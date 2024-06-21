@@ -17,7 +17,7 @@ function Notification({ status }) {
   const notification = status == 'succeeded' ? notiSuccess : notiFailed // Sửa lỗi chính tả và kiểu dữ liệu ở đây
 
   return (
-    <div className=' fixed z-50 p-5 top-[50%] -translate-y-[50%] right-[50%] translate-x-[50%] flex justify-center items-center bg-slate-400 bg-opacity-60'>
+    <div className=' bg-brown bg-opacity-55 fixed z-50 p-5 top-[50%] -translate-y-[50%] right-[50%] translate-x-[50%] flex justify-center items-center bg-slate-400'>
       <div className=' flex flex-col justify-center items-center'>
         <div className=' p-6 w-9 h-9 flex justify-center rounded-full bg-green-300 items-center'>
           <FontAwesomeIcon className=' text-white text-[30px]' icon={notification.faIcon}/>
