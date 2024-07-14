@@ -9,9 +9,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchCart, getStateError, getStateItems, getStateStatus } from '../../redux/cartSlice'
 import { Tooltip } from 'flowbite-react'
 import { Dropdown } from 'flowbite-react'
-import { getStatus } from '../../redux/userSlice'
+import { getStatus, userLogout } from '../../redux/userSlice'
 import SearchComponent from './ItemMenu/ChildItem/searchItem'
 import Logo from '../../assets/imgs/LogoGemHub.png'
+import { removeTokenFromLocalStorage } from '../../api/localStorage'
 
 export default function Header() {
 
@@ -24,6 +25,7 @@ export default function Header() {
   const cartStatus = useSelector(getStateStatus)
   const cartError = useSelector(getStateError)
   const userStatus = useSelector(getStatus)
+  
 
   const checkAuthen = () => {
     if(userStatus === 'authenticated') navigate('/cart')
@@ -43,6 +45,11 @@ export default function Header() {
     }
 
   }, [])
+  const logOut = () => {
+    removeTokenFromLocalStorage()
+    dispatch(userLogout())
+    navigate('/home')
+  }
 
   return (
     <div className='w-full lg:sticky top-0 bg-white z-50 pt-2'>
@@ -61,18 +68,36 @@ export default function Header() {
         <div className=' flex justify-end items-center gap-3 text-xl   '>
           <SearchComponent/>
           <div >
-            <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
+            {userStatus !== 'authenticated' ? <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
               <Dropdown.Item>
                 <Link to='/login'>Đăng nhập</Link>
               </Dropdown.Item>
               <Dropdown.Item>
                 <Link to='/signup'>Đăng ký</Link>
               </Dropdown.Item>
-            </Dropdown>
+            </Dropdown>:<Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
+              <Dropdown.Item>
+                <Link to='/cart'>Giỏ hàng</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to='/historyOrder'>Lịch Sử mua hàng</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <div onClick={logOut}>Đăng xuất</div>
+              </Dropdown.Item>
+            </Dropdown>}
+            {/* <Dropdown className=' p-2' label={<FontAwesomeIcon icon={faUser} className=' py-3 cursor-pointer' />} inline>
+              <Dropdown.Item>
+                <Link to='/login'>Đăng nhập</Link>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link to='/signup'>Đăng ký</Link>
+              </Dropdown.Item>
+            </Dropdown> */}
           </div>
           <div onClick={checkAuthen} >
             <Tooltip content='your cart' style='light' arrow={false} placement='top'>
-              <Badge content='5' color='green' placement='top end' withBorder >
+              <Badge content='' color='green' placement='top end' withBorder >
                 <FontAwesomeIcon icon={faCartShopping} className=' p-3 cursor-pointer' />
               </Badge>
             </Tooltip>

@@ -106,12 +106,6 @@ function CheckoutPage() {
               Thủ tục thanh toán
           </h1>
           <h2 className=' mb-4  py-2 w-full text-start text-xl text-black font-semibold font-serif'>
-              Địa chỉ nhận hàng
-          </h2>
-          <span className=' py-2 text-lg w-full mb-4'>
-              43 khái đông 4, hòa hải ngũ hành sơn , đà nẵng.
-          </span>
-          <h2 className=' mb-4  py-2 w-full text-start text-xl text-black font-semibold font-serif'>
               Chọn phương thức thanh toán.
           </h2>
           <fieldset className=' mb-4 flex flex-col gap-y-4 w-full'>

@@ -10,6 +10,7 @@ import { faPinterest } from '@fortawesome/free-brands-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItemToCart, getStateStatus } from '../../redux/cartSlice'
 import Notification from '../Notification'
+import { formatCurrencyVND } from '../../api/function'
 
 const Product = (props) => {
   const [noti, setNoti] = useState(false)
@@ -102,7 +103,7 @@ const Product = (props) => {
             </div>
           </div>
           <div className="mt-2.5 mb-[25px] mx-0 pt-[30px] border-t-[#ebebeb] border-t border-solid">
-            <div className="special-price"><span className="text-[2.50000em] inline-block text-[#42210b] leading-5 font-medium">{product.productPrice}<span className="text-2xl align-text-top">đ</span></span> </div> {/* Giá */}
+            <div className="special-price"><span className="text-[2.50000em] inline-block text-[#42210b] leading-5 font-medium">{formatCurrencyVND(product.productPrice)}</span> </div> {/* Giá */}
           </div>
           <div className="form-product">
             <form encType="multipart/form-data" id="add-to-cart-form" action="/cart/add" method="post" className="form-inline margin-bottom-10">
