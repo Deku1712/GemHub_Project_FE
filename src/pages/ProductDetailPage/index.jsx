@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import manage from '../../service/manage'
+import { useSelector } from 'react-redux'
+import { getStateStatus } from '../../redux/cartSlice'
 
 const ProductPage = (props) => {
 

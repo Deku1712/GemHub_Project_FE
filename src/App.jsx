@@ -31,6 +31,8 @@ import CheckoutPage from './pages/CheckoutPage'
 import Result from './pages/Result'
 import AdminPage from './pages/AdminPage'
 import DashBoard from './pages/AdminPage/DashBoard'
+import AdminProduct from './pages/AdminPage/AdminProduct'
+import OrderPage from './pages/OrderPage'
 
 
 function App() {
@@ -76,6 +78,7 @@ function App() {
         <Route path='/shop' element={<Shop />} />
         <Route path='/shop/products/:id' element={<ProductPage />} />
         <Route path='/cart' element={<CartPage />} />
+        <Route path='/historyOrder' element={<OrderPage/>}/>
         <Route path='/address' element={<AddressPage />} />
       </Route>
       <Route path="/login" element={<LoginPage />} />
@@ -84,6 +87,7 @@ function App() {
       <Route path='/result' element={<Result/>}/>
       <Route path='/admin/*' element={<AdminPage/>}>
         <Route path='dashBoard' element={<DashBoard/>} />
+        <Route path='manageProducts' element={<AdminProduct/>} />
       </Route>
     </Routes>
 

@@ -24,6 +24,16 @@ class Manage {
     return baseURL.get(baseUrl_Product + '/getProductLimited')
   }
 
+  updateProduct(formData) {
+    return baseURL.put(baseUrl_Product + '/' + formData.id , formData)
+  }
+  addProduct (formData) {
+    return baseURL.post(baseUrl_Product , formData)
+  }
+  deleteProduct(product)  {
+    return baseURL.delete(baseUrl_Product + '/' + product.id)
+  }
+
 
   //Cart api
   getCart() {
@@ -101,6 +111,9 @@ class Manage {
 
   getAllOrder() {
     return baseURL.get(baseURL_Order)
+  }
+  getOrderByUser() {
+    return baseURL.get(baseURL_Order + '/user')
   }
 
   updateOrder(resultDTO) {

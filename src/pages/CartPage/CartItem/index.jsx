@@ -69,7 +69,7 @@ function CartItem(props) {
               <>
                 <p className=' text-brown hover:text-amber-950 transition-all ease-in-out cursor-pointer ' onClick={() => deleteItem(item.id)}>Remove</p>
                 <p className=' text-brown hover:text-amber-950 transition-all ease-in-out cursor-pointer ' onClick={() => changeStatus(item)} >Save for later</p>
-                <p className=' text-brown hover:text-amber-950 transition-all ease-in-out cursor-pointer ' >Move to Wishlist</p>
+                {/* <p className=' text-brown hover:text-amber-950 transition-all ease-in-out cursor-pointer ' >Move to Wishlist</p> */}
 
               </>
               :

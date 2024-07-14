@@ -26,6 +26,12 @@ const userSlice = createSlice({
           payload: token
         }
       }
+    },
+    userLogout: {
+      reducer(state, action) {
+        state.token = '',
+        state.status = ''
+      }
     }
 
   },
@@ -45,7 +51,7 @@ const userSlice = createSlice({
   }
 })
 
-export const {userLogin} = userSlice.actions
+export const {userLogin,userLogout} = userSlice.actions
 export const getToken = (state) => state.user.token
 export const getStatus = (state) => state.user.status
 
